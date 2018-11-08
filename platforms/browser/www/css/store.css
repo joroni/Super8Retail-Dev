@@ -345,7 +345,7 @@ button, .button{
 
 .total {
     font-weight: 600;
-    font-size:1.3em;
+    font-size:1em;
 }
 
 .modal-dialog {
@@ -388,7 +388,7 @@ h5.category{
     height: auto !important;
     background:transparent;
     color: #333;
-    font-size: 1em;
+    font-size: 1em !important;
   }
   .cart .title {
       color: #25A187;
@@ -458,6 +458,12 @@ table.table td, table.table th {
    vertical-align: middle;
 }
 tbody.cart td, table.table th {
-     padding-top: .2rem; 
-     padding-bottom: .2rem; 
+     padding-top: .2rem !important; 
+     padding-bottom: .2rem !important; 
+}
+
+table.confirm td, table.confirm th {
+    width: 100%;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
 }

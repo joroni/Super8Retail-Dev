@@ -99,7 +99,8 @@ $$(document).on('DOMContentLoaded', function () {
     
         $$('#customerList').on("click", ".btn-editar", function() {
             // var idMember = $$(this).data("id");
-            var idMember = $$('input.customerid').value();
+           // var idMember = $$('input.customerid').value();
+            var idMember = $$("input#memberID").val();
             selectMember(idMember);
             $$("label").addClass("active");
             $$("#modal-Title").html("Edit Customer");
@@ -108,7 +109,8 @@ $$(document).on('DOMContentLoaded', function () {
     
         $$('#customerList').on("click", ".btn-eliminar", function() {
             //  var idMember = $$(this).data("id");
-            var idMember = $$('input.customerid').value();
+         //   var idMember = $$('input.customerid').value();
+            var idMember = $$("input#memberID").val();
             removeMember(idMember);
             memberList();
             //selectMemberList();
@@ -125,7 +127,8 @@ $$(document).on('DOMContentLoaded', function () {
 
 
         $$(".btn-eliminar").on("click", function () {
-            var idMember = $$(this).data("id");
+           // var idMember = $$(this).attr("data-id");
+           var idMember = $$("input#memberID").val();
             removeMember(idMember);
             memberList();
             //selectMemberList();
@@ -472,7 +475,7 @@ function selectMember(idMember) {
                      $$('#email').val(rs.rows.item(0).EMAIL);*/
                     $$('#customerInfo').html('<li>' +
                         '<div class="item-content">' +
-                        '<div class="item-media"><i class="material-icons icon-f7">person</i></div>' +
+                        '<div class="item-media"><i class="material-icons">person</i></div>' +
                         '<div class="item-inner">' +
                         '<input type="hidden" class="customerid" value="' + rs.rows.item(0).ID + '" />' +
                         '<div class="item-title">' + rs.rows.item(0).FNAMES + ' ' + rs.rows.item(0).LNAMES + '</div>' +
@@ -491,7 +494,7 @@ function selectMember(idMember) {
                         '</li>' +
                         '<li>' +
                         '<div class="item-content">' +
-                        '<div class="item-media"><i class="material-icons icon-f7">mail</i></div>' +
+                        '<div class="item-media"><i class="f7-icons">email</i></div>' +
                         '<div class="item-inner">' +
                         '<div class="item-title">' + rs.rows.item(0).EMAIL + '</div>' +
                         '<div class="item-after"></div>' +
@@ -500,7 +503,7 @@ function selectMember(idMember) {
                         '</li>' +
                         '<li>' +
                         '<div class="item-content">' +
-                        '<div class="item-media"><i class="material-icons icon-f7">mail</i></div>' +
+                        '<div class="item-media"><i class="f7-icons">card</i></div>' +
                         '<div class="item-inner">' +
                         '<div class="item-title">' + rs.rows.item(0).ID + '<input id="memberID" type="hidden" value="' + rs.rows.item(0).ID + '"/></div>' +
                         '<div class="item-after"></div>' +

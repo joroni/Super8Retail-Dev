@@ -193,12 +193,16 @@
     </div>
     <!-- Popup Products -->
     <div class="popup" id="frmCadastro">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/cart.css">
+      <link href="css/mdb.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/store.css">
       <div class="view">
         <div class="page">
           <div class="navbar">
             <div class="navbar-inner">
               <div class="left">
-                <a href="#" class="link popup-close">Back</a>
+                <a href="#" class="link popup-close"><i class="icon icon-back"></i></a>
               </div>
               <div class="title">Confirmation</div>
             </div>
@@ -211,7 +215,7 @@
                         <div class="item-inner">
                           <div class="item-title item-label">Name</div>
                           <div class="item-input-wrap">
-                            <input id="txtName" type="text" placeholder="Your name"/>
+                            <input id="txtName" readonly type="text" placeholder="Your name"/>
                           </div>
                         </div>
                       </div>
@@ -221,7 +225,17 @@
                         <div class="item-inner">
                           <div class="item-title item-label">PO #</div>
                           <div class="item-input-wrap">
-                            <input id="txtCode" type="text" placeholder="PO Number"/>
+                            <input id="txtCode"readonly  type="text" placeholder="PO Number"/>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="item-content item-input">
+                        <div class="item-inner">
+                          <div class="item-title item-label">Notes</div>
+                          <div class="item-input-wrap">
+                            <input id="txtNotes"readonly type="text" value="Processing"/>
                           </div>
                         </div>
                       </div>
@@ -231,12 +245,13 @@
                         <div class="item-inner">
                           <div class="item-title item-label">Date</div>
                           <div class="item-input-wrap">
-                            <input id="txtDate" type="text" placeholder="Date"/>
+                            <input id="txtDate" readonly type="text" placeholder="Date"/>
                           </div>
                         </div>
                       </div>
                     </li>
-                    <li>
+                   
+                    <li class="hidden">
                       <div class="item-content item-input">
                         <div class="item-inner">
                           <div class="item-title item-label">Items</div>
@@ -246,7 +261,13 @@
                         </div>
                       </div>
                     </li>
-                 
+                    <li>
+                      <div class="block">
+                        <table id="itemRecap" class="table table-hover">
+                         
+                      </table>
+                    </div>
+                      </li>
                     <li>
                         <div class="block">
                   <!--  <button type="submit" class="submit btn-submit-po col button button-big button-fill button-raised">Submit</button>-->
