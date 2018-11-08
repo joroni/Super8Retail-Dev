@@ -494,9 +494,8 @@ app.purchaseOrders = function () {
         var timepo = localStorage.getItem("timeandponumber");
         $$("#servingpo")
             .html(timepo);
-        app.dialog.alert(timepo + ' ' + activeCustomer);
-     //   $$("#thisCart").html().clone().appendTo("#itemRecap");
-    
+       // app.dialog.alert(timepo + ' ' + activeCustomer);
+  
 
     }
 
@@ -515,7 +514,7 @@ app.purchaseOrders = function () {
                 .val(),
             notes: $$("#txtNotes").val()
         });
-        CustomerCartInfo();
+      //  CustomerCartInfo();
         txtClients.push(client);
         console.log("txtClients - " + txtClients);
         localStorage.setItem("txtClients", JSON.stringify(txtClients));
@@ -1300,7 +1299,7 @@ app.resetPOCart = function () {
         localStorage.removeItem("timeandponumber");
         localStorage.removeItem("fnMember");
         
-        $$(".cart, .mycart, #totalItems")
+        $$(".cart, .mycart,.cartmemberinfo, #totalItems")
             .html("");
 
         //  localStorage.removeItem("purchaseorder");

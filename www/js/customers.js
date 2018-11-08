@@ -47,7 +47,7 @@ $$(document).on('DOMContentLoaded', function () {
             var txtLname = $$('#lname');
             var txtPhone = $$('#phone');
             var txtEmail = $$('#email');
-            var txtEmail = $$('#birthdate');
+            var txtBirthdate = $$('#birthdate');
     
            // var input = $$('input');
     
@@ -63,6 +63,7 @@ $$(document).on('DOMContentLoaded', function () {
             member.lname = txtLname.val();
             member.phone = txtPhone.val();
             member.email = txtEmail.val();
+            member.birthdate = txtBirthdate.val();
     
     
     
@@ -81,6 +82,7 @@ $$(document).on('DOMContentLoaded', function () {
             txtLname.val(null);
             txtPhone.val(null);
             txtEmail.val(null);
+            txtBirthdate.val(null);
             txtId.val(null);
         });
     
@@ -179,7 +181,7 @@ $$(document).on('DOMContentLoaded', function () {
 ////////////////////////////////////////////////////////////////////
 function init() {
     db.transaction(function (tx) {
-            tx.executeSql('create table if not exists CUSTOMERS(ID, FNAMES, LNAMES,PHONE, EMAIL)');
+            tx.executeSql('create table if not exists CUSTOMERS(ID,FNAMES,LNAMES,PHONE,EMAIL,BIRTHDATE)');
             //  tx.executeSql('create table if not exists PURCHASEORDER(id,sku,cant,name,price,img,available,oldprice,smname,notes,email,timestamp,total)');
         //  tx.executeSql('create table if not exists PURCHASEORDER(ID, CNAME, SMNAME,TOTAL, TIMESTAMP)');
         },
@@ -218,16 +220,19 @@ function saveOrderLocal() {
 
 function memberList() {
     db.readTransaction(function (t) {
-        t.executeSql('SELECT rowid, ID, FNAMES, LNAMES, PHONE, EMAIL FROM CUSTOMERS', [], function (t, rs) {
+        t.executeSql('SELECT rowid, ID, FNAMES, LNAMES, PHONE, EMAIL , BIRTHDATE FROM CUSTOMERS', [], function (t, rs) {
             if (rs.rows.length > 0) {
                 var lisHtml = "";
                 myJson = [];
                for (var i = 0; i < rs.rows.length; i++) {
                     var member = rs.rows.item(i);
                     var id = member.ID;
+                    var fname = member.FNAMES;
+                    var lname = member.LNAMES;
+                    var birthdate = member.BIRTHDATE;
                     var fullname = member.FNAMES + ' ' + member.LNAMES;
 
-                    lisHtml += '<li><a href="/customerinfo/" onclick="selectMember(' + id + ')">' + fullname + '</a></li>';
+                    lisHtml += '<li><a href="/customerinfo/" data-fname="'+fname+'" data-lname="'+lname+'" onclick="selectMember(' + id + ')">' + fullname + '</a></li>';
                    // myJson.push({ member: member,  fullname: fullname, FNAMES: member.FNAMES, LNAMES:member.LNAMES, ID: member.ID,});
                  //  myJson.push({member});
                //  myJson.push({ member: member,  fullname: fullname, FNAMES: member.FNAMES, LNAMES:member.LNAMES, ID: member.ID,});
@@ -235,9 +240,9 @@ function memberList() {
 
 
 
-                function showAll(item, id, cid, title, fname, phone, description) {
+               /* function showAll(item, id, cid, title, fname, phone, description) {
                     $$('#customerList').append('<li>' + title + ' ' + fname + ' ' + id + '</li>');
-                }
+                }*/
                 //mybase.init.getAll();
 
                 localStorage.setItem("listHTML", lisHtml);
@@ -420,8 +425,8 @@ function mockData() {
 
 function saveMember(member) {
     db.transaction(function (tx) {
-        tx.executeSql('INSERT INTO CUSTOMERS(ID, FNAMES, LNAMES, PHONE, EMAIL) VALUES(?, ?, ?,?,?)', [
-            member.id, member.fname, member.lname, member.phone, member.email
+        tx.executeSql('INSERT INTO CUSTOMERS(ID, FNAMES, LNAMES, PHONE, EMAIL, BIRTHDATE) VALUES(?, ?, ?,?,?,?)', [
+            member.id, member.fname, member.lname, member.phone, member.email, member.birthdate
         ]);
     }, error, function () {
         alert("Item Saved.");
@@ -432,7 +437,7 @@ function saveMember(member) {
 }
 
 
-
+/*
 function saveOrderLocal(order) {
     var order = Object();
     var i = 1;
@@ -453,12 +458,13 @@ function saveOrderLocal(order) {
 
     });
 }
+*/
 
 
 function selectMember(idMember) {
     // localStorage.setItem("customer-name",idMember);
     db.readTransaction(function (t) {
-        t.executeSql('SELECT ID, FNAMES, LNAMES , PHONE, EMAIL FROM CUSTOMERS WHERE ID = ?', [idMember],
+        t.executeSql('SELECT ID, FNAMES, LNAMES , PHONE, EMAIL, BIRTHDATE FROM CUSTOMERS WHERE ID = ?', [idMember],
             function (t, rs) {
                 if (rs.rows.length > 0) {
                     var lisHtml = '';
@@ -468,6 +474,7 @@ function selectMember(idMember) {
                     member.lname = rs.rows.item(0).LNAMES;
                     member.phone = rs.rows.item(0).PHONE;
                     member.email = rs.rows.item(0).EMAIL;
+                    member.birthdate = rs.rows.item(0).BIRTHDATE;
                     /* $$('#txt-id').val(rs.rows.item(0).ID);
                      $$('#fname').val(rs.rows.item(0).FNAMES);
                      $$('#lname').val(rs.rows.item(0).LNAMES);
@@ -501,6 +508,16 @@ function selectMember(idMember) {
                         '</div>' +
                         '</div>' +
                         '</li>' +
+                        '<li>' +
+                        '<div class="item-content">' +
+                        '<div class="item-media"><i class="f7-icons">email</i></div>' +
+                        '<div class="item-inner">' +
+                        '<div class="item-title">' + rs.rows.item(0).BIRTHDATE + '</div>' +
+                        '<div class="item-after"></div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</li>' +
+                        
                         '<li>' +
                         '<div class="item-content">' +
                         '<div class="item-media"><i class="f7-icons">card</i></div>' +
@@ -610,8 +627,8 @@ function viewidMember(idMember) {
 */
 function updateMember(member) {
     db.transaction(function (tx) {
-        tx.executeSql('UPDATE CUSTOMERS SET FNAMES = ?, LNAMES = ?, PHONE = ?, EMAIL = ?, WHERE ID = ?', [
-            member.phone, member.fname, member.lname, member.id
+        tx.executeSql('UPDATE CUSTOMERS SET FNAMES = ?, LNAMES = ?, PHONE = ?, EMAIL = ?,  BIRTHDATE = ?, WHERE ID = ?', [
+             member.fname, member.lname,member.phone, member.email, member.birthdate, member.id
         ]);
     }, error, function () {
         alert("The member has been updated successfully");
@@ -645,8 +662,8 @@ function removeMember(idMember) {
 
 function savePO(member) {
     db.transaction(function (tx) {
-        tx.executeSql('INSERT INTO CUSTOMERS(ID, FNAMES, LNAMES, PHONE, EMAIL) VALUES(?, ?, ?,?,?)', [
-            member.id, member.fname, member.lname, member.phone, member.email
+        tx.executeSql('INSERT INTO CUSTOMERS(ID, FNAMES, LNAMES, PHONE, EMAIL, DATE) VALUES(?,?,?,?,?,?)', [
+            member.id, member.fname, member.lname, member.phone, member.email,  member.date
         ]);
     }, error, function () {
         alert("Item Saved.");
