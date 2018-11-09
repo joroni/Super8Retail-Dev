@@ -49,6 +49,10 @@ routes = [
     componentUrl: './pages/productb.html',
   },
   {
+    path: '/activepo/:code/',
+    componentUrl: './pages/activepo.html',
+  },
+  {
     path: '/form/',
     url: './pages/form.html',
   },
