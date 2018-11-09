@@ -19,6 +19,7 @@ var app = new Framework7({
             },
             // productbs: JSON.parse(customers),
             // productbs: [{"id":1,"cid":1540562584936,"title":"John","fname":"Doe","phone":"12345646","description":"john.doe@email.com"},{"id":2,"cid":1540818411406,"title":"Melissa","fname":"De Leon","phone":"093482940","description":"2014-04-30"},{"id":3,"cid":1540825840882,"title":"Joanne","fname":"Amparo","phone":"123456789","description":"2014-04-08"},{"id":4,"cid":1540918462991,"title":"JKJk","fname":"weieoidfp","phone":"12459","description":"2014-04-30"}],
+            //activepos: JSON.stringify(localStorage.getItem("POselected")),
             productcs: JSON.parse(orderItems),
             //productbs:["{\"Code\":\"1\",\"Name\":\"User\",\"Cid\":\"12345\",\"Date\":\"10-28-18\",\"Items\":\"Test\"}"],
             //productbs: ["{\"id\":\"1\",\"cid\":\"3495894823022\",\"title\":\"Test User1\",\"Date\":\"10-20.18\",\"Items\":\"<table>   <tbody><tr>     <th>Name</th>   </tr>     </tbody><tbody id=\\\"countries\\\"><tr><td>France</td><td><button onclick=\\\"app.Edit(0)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(0)\\\">Delete</button></td></tr><tr><td>Germany</td><td><button onclick=\\\"app.Edit(1)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(1)\\\">Delete</button></td></tr><tr><td>England</td><td><button onclick=\\\"app.Edit(2)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(2)\\\">Delete</button></td></tr><tr><td>Spain</td><td><button onclick=\\\"app.Edit(3)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(3)\\\">Delete</button></td></tr><tr><td>Belgium</td><td><button onclick=\\\"app.Edit(4)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(4)\\\">Delete</button></td></tr><tr><td>Italy</td><td><button onclick=\\\"app.Edit(5)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(5)\\\">Delete</button></td></tr><tr><td>Portugal</td><td><button onclick=\\\"app.Edit(6)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(6)\\\">Delete</button></td></tr><tr><td>Irland</td><td><button onclick=\\\"app.Edit(7)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(7)\\\">Delete</button></td></tr><tr><td>Luxembourg</td><td><button onclick=\\\"app.Edit(8)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(8)\\\">Delete</button></td></tr></tbody> </table>\"}"],
@@ -409,12 +410,103 @@ $$(document)
 $$(document)
     .on('page:init', '.page[data-name="catalogc"]', function (e) {
         app.purchaseOrders();
+        $$('.item-link').on('click', function(){
+            var codeID = $$(this).attr("data-code");
+            app.thisItem(codeID);
+           
+        })
     });
 $$(document)
     .on('DOMContentLoaded', function () {
         app.purchaseOrders();
+        thisPO();
     });
 
+    
+    app.thisItem=function (codeID) {
+       // var purchase_orders = [{"code":"1541745596212","name":"Jane Doe","date":"Fri Nov 09 2018 14:40:03 GMT+0800 (Philippine Standard Time)-1:36","items":"<tr><td><span class=\"qant\">1</span></td><td><h3 class=\"title\" data-id=\"A0000001\">Denim Shirt</h3></td><td colspan=\"2\"><p class=\"right\"><del></del></p><p class=\"price right\">₱299.00</p></td></tr><tr class=\"total-row\"><td colspan=\"2\"> </td><td id=\"total\" class=\"total right\" colspan=\"3\">₱299.00 </td></tr>","notes":"Processing"},{"code":"1541745657473","name":"Jane Doe","date":"Fri Nov 09 2018 14:41:02 GMT+0800 (Philippine Standard Time)-18:37","items":"<tr><td><span class=\"qant\">1</span></td><td><h3 class=\"title\" data-id=\"A0000002\">Drypers Mega Pack</h3></td><td colspan=\"2\"><p class=\"right\"><del>₱630.00</del></p><p class=\"price right\">₱503.00</p></td></tr><tr><td><span class=\"qant\">1</span></td><td><h3 class=\"title\" data-id=\"A0000003\">Cool Shirt</h3></td><td colspan=\"2\"><p class=\"right\"><del></del></p><p class=\"price right\">₱99.00</p></td></tr><tr class=\"total-row\"><td colspan=\"2\"> </td><td id=\"total\" class=\"total right\" colspan=\"3\">₱602.00 </td></tr>","notes":"Processing"}];
+        var purchase_orders = JSON.parse(localStorage.getItem("txtClients"));
+        
+        var evens = _.filter(purchase_orders, function(obj) {
+            return ~obj.code.toLowerCase().indexOf(codeID);
+            
+            
+        });
+        localStorage.setItem("POselected",JSON.stringify(evens));
+        alert(JSON.stringify(evens));
+
+        
+    }
+
+
+    function thisPO(){
+       
+        /*var data =  [{"code":"1541745596212","name":"Jane Doe","date":"Fri Nov 09 2018 14:40:03 GMT+0800 (Philippine Standard Time)-1:36","items":"<tr><td><span class=\"qant\">1</span></td><td><h3 class=\"title\" data-id=\"A0000001\">Denim Shirt</h3></td><td colspan=\"2\"><p class=\"right\"><del></del></p><p class=\"price right\">₱299.00</p></td></tr><tr class=\"total-row\"><td colspan=\"2\"> </td><td id=\"total\" class=\"total right\" colspan=\"3\">₱299.00 </td></tr>","notes":"Processing"}];
+        for (var key in data) {
+            for (var i = 0; i < data[key].length; i++) {
+                var code = data[key][i].code;
+                var name = data[key][i].name;
+                var date = data[key][i].date;
+                var items = data[key][i].items;
+                alert(code);
+                $$("#poCode").html(code);
+                $$("#poName").html(name);
+
+              
+            }
+        }*/
+        var data = {
+            "placements": [{
+              "message": "If you like this, you might be into these",
+              "items": [{
+                  "id": "029148",
+                  "name": "Woodblock Play Suit",
+                  "linkURL": "http://www.warehouse.co.uk/gb/just-arrived/all/woodblock-play-suit/029148.html",
+                  "imageURL": "http://demandware.edgesuite.net/aaxe_prd/on/demandware.static/-/Sites-WAREHOUSE/default/dw0f93fcd4/images/hi-res/warehouse_02914899_2.jpg",
+                  "price": "46.00"
+                },
+                {
+                  "id": "0294526806",
+                  "name": "Smock Dress",
+                  "linkURL": "http://www.warehouse.co.uk/gb/just-arrived/all/smock-dress/0294526806.html",
+                  "imageURL": "http://demandware.edgesuite.net/aaxe_prd/on/demandware.static/-/Sites-WAREHOUSE/default/dwc9d5ea05/images/hi-res/warehouse_02945268_5.jpg",
+                  "price": "39.00"
+                },
+                {
+                  "id": "0297180006",
+                  "name": "Cami",
+                  "linkURL": "http://www.warehouse.co.uk/gb/just-arrived/all/cami/0297180006.html",
+                  "imageURL": "http://demandware.edgesuite.net/aaxe_prd/on/demandware.static/-/Sites-WAREHOUSE/default/dw4b954022/images/hi-res/warehouse_02971800_2.jpg",
+                  "price": "9.00"
+                },
+                {
+                  "id": "0298473606",
+                  "name": "Asymmetric Wrap Cami Dress",
+                  "imageURL": "http://demandware.edgesuite.net/aaxe_prd/on/demandware.static/-/Sites-WAREHOUSE/default/dw686fea84/images/hi-res/warehouse_02984736_2.jpg",
+                  "price": "46.00"
+                },
+                {
+                  "id": "0297155306",
+                  "name": "Casual Stripe Tee",
+                  "linkURL": "http://www.warehouse.co.uk/gb/just-arrived/all/casual-stripe-tee/0297155306.html",
+                  "imageURL": "http://demandware.edgesuite.net/aaxe_prd/on/demandware.static/-/Sites-WAREHOUSE/default/dw4609af3e/images/hi-res/warehouse_02971553_2.jpg",
+                  "price": "16.00"
+                }
+              ]
+            }]
+          }
+          $.each(data.placements[0].items,function(i,v){
+          $('#thisPOdata').html('<img src="'+v.imageURL+'" height="50" width="50"><div class="placements-title"><a href="'+v.linkURL+'"><h2>'+v.name+'</h2>'+v.price+'</div>')
+          })
+        
+    }
+
+
+
+    $$(document).on('page:init', '.page[data-name="activepo"]', function (e) {
+
+        alert('activepo');
+    });
 //alert("catalogc");
 app.purchaseOrders = function () {
 
@@ -437,8 +529,7 @@ app.purchaseOrders = function () {
     });
     */
 
-    $$("#frmCadastro")
-        .on("click", ".btn-submit-po", function () {
+    $$("#frmCadastro").on("click", ".btn-submit-po", function () {
             if (operation == "A") {
                 return Adicionar(txtClients);
 
@@ -499,9 +590,11 @@ app.purchaseOrders = function () {
 
     }
 
+   
+
     function Adicionar(txtClients) {
         // CustomerCartInfo();
-        var client = JSON.stringify({
+        var client = {
             code: $$("#txtCode")
                 .val(),
             name: $$("#txtName")
@@ -513,7 +606,7 @@ app.purchaseOrders = function () {
             items: $$("#txtItems")
                 .val(),
             notes: $$("#txtNotes").val()
-        });
+        };
       //  CustomerCartInfo();
         txtClients.push(client);
         console.log("txtClients - " + txtClients);
@@ -565,18 +658,27 @@ app.purchaseOrders = function () {
         $$("#tblList")
             .html("");
         for (var i in txtClients) {
-            var cli = JSON.parse(txtClients[i]);
+           // var cli = JSON.parse(txtClients[i]);
+           var cli = txtClients[i];
+               // the original string
+            var olddate =  cli.date;
+                // remove everything after the last backslash
+            var shortdate = olddate.substr(0, olddate.lastIndexOf(" GMT") + 1);
             $$("#tblList")
-                .append('<li>' +
-                    '<a href="#" class="item-link item-content" alt="">' +
+                    .append('<li>' +
+                    '<a href="#" class="item-link item-content popup-open"  data-popup="#activepo" data-code="'+ cli.code+'" alt="">' +
                     // '<div class="item-media"><i class="icon icon-f7"></i></div>' +
                     '<div class="item-inner">' +
-                    '<div class="item-title">' + cli.code + '<p><small>' + cli.date + '</small></p></div>' +
+                    '<div class="item-title">' + cli.code + '<p><small>' + shortdate + '</small></p></div>' +
                     '<div class="item-after"><span class="badge">' + cli.notes + '</span></div>' +
                     '</div>' +
                     '</a>' +
                     '</li>'
-                )
+                );
+
+
+           
+              
         }
     }
 }
@@ -1306,13 +1408,14 @@ app.resetPOCart = function () {
        
         console.log("Cache is now cleared.");
         
-        app.router.navigate('/catalogc/');
+       // app.router.navigate('/catalogc/');
       /*
         ordersView.router.navigate(ordersView.router.currentRoute.url, {
             ignoreCache: true,
             reloadCurrent: true
         });*/
-       // ordersView.router.refreshPage();
+      // ordersView.router.refreshPage();
+   // location.reload();
         return true;
 
 }
