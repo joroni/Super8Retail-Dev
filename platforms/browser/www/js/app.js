@@ -433,7 +433,7 @@ $$(document)
             
         });
         localStorage.setItem("POselected",JSON.stringify(evens));
-        alert(JSON.stringify(evens));
+       // alert(JSON.stringify(evens));
 
         
     }
@@ -455,53 +455,24 @@ $$(document)
               
             }
         }*/
-        var data = {
-            "placements": [{
-              "message": "If you like this, you might be into these",
-              "items": [{
-                  "id": "029148",
-                  "name": "Woodblock Play Suit",
-                  "linkURL": "http://www.warehouse.co.uk/gb/just-arrived/all/woodblock-play-suit/029148.html",
-                  "imageURL": "http://demandware.edgesuite.net/aaxe_prd/on/demandware.static/-/Sites-WAREHOUSE/default/dw0f93fcd4/images/hi-res/warehouse_02914899_2.jpg",
-                  "price": "46.00"
-                },
-                {
-                  "id": "0294526806",
-                  "name": "Smock Dress",
-                  "linkURL": "http://www.warehouse.co.uk/gb/just-arrived/all/smock-dress/0294526806.html",
-                  "imageURL": "http://demandware.edgesuite.net/aaxe_prd/on/demandware.static/-/Sites-WAREHOUSE/default/dwc9d5ea05/images/hi-res/warehouse_02945268_5.jpg",
-                  "price": "39.00"
-                },
-                {
-                  "id": "0297180006",
-                  "name": "Cami",
-                  "linkURL": "http://www.warehouse.co.uk/gb/just-arrived/all/cami/0297180006.html",
-                  "imageURL": "http://demandware.edgesuite.net/aaxe_prd/on/demandware.static/-/Sites-WAREHOUSE/default/dw4b954022/images/hi-res/warehouse_02971800_2.jpg",
-                  "price": "9.00"
-                },
-                {
-                  "id": "0298473606",
-                  "name": "Asymmetric Wrap Cami Dress",
-                  "imageURL": "http://demandware.edgesuite.net/aaxe_prd/on/demandware.static/-/Sites-WAREHOUSE/default/dw686fea84/images/hi-res/warehouse_02984736_2.jpg",
-                  "price": "46.00"
-                },
-                {
-                  "id": "0297155306",
-                  "name": "Casual Stripe Tee",
-                  "linkURL": "http://www.warehouse.co.uk/gb/just-arrived/all/casual-stripe-tee/0297155306.html",
-                  "imageURL": "http://demandware.edgesuite.net/aaxe_prd/on/demandware.static/-/Sites-WAREHOUSE/default/dw4609af3e/images/hi-res/warehouse_02971553_2.jpg",
-                  "price": "16.00"
-                }
-              ]
-            }]
-          }
-          $.each(data.placements[0].items,function(i,v){
-          $('#thisPOdata').html('<img src="'+v.imageURL+'" height="50" width="50"><div class="placements-title"><a href="'+v.linkURL+'"><h2>'+v.name+'</h2>'+v.price+'</div>')
+
+        
+       // var data =  [{"code":"1541761091501","name":"fdfsf DVSDGDGH","date":"Fri Nov 09 2018 18:58:14 GMT+0800 (Philippine Standard Time)-9:51","items":"<tr><td><span class=\"qant\">1</span></td><td><h3 class=\"title\" data-id=\"A0000002\">Drypers Mega Pack</h3></td><td colspan=\"2\"><p class=\"right\"><del>₱630.00</del></p><p class=\"price right\">₱503.00</p></td></tr><tr class=\"total-row\"><td colspan=\"2\"> </td><td id=\"total\" class=\"total right\" colspan=\"3\">₱503.00 </td></tr>","notes":"Processing"}]
+         var data = JSON.parse(localStorage.getItem("POselected"));
+        
+          $.each(data,function(i,v){
+            var shortdate = v.date.substr(0, v.date.lastIndexOf(" GMT") + 1);
+          $('#thisPOdata').html('<ul>'+
+          '<li><label>PO #:</label>'+v.code +'</li>'+
+          '<li><label>Customer:</label>'+v.name +'</li>'+
+          '<li><label>Date:</label>'+shortdate +'</li></ul>'+
+          '<div><table class="table">'+v.items +'</table></div>'        
+        );
           })
         
     }
 
-
+    
 
     $$(document).on('page:init', '.page[data-name="activepo"]', function (e) {
 
