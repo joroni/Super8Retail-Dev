@@ -233,7 +233,9 @@ function memberList() {
                     var fullname = member.FNAMES + ' ' + member.LNAMES;
 
                    // lisHtml += '<li><a href="/customerinfo/" data-fname="'+fname+'" data-lname="'+lname+'" onclick="selectMember(' + id + ')">' + fullname + '</a></li>';
-                    lisHtml +='<li>'+
+                 
+                    lisHtml +='<li class="swipeout">'+
+                    '<div class="swipeout-content" data-id="'+id+'">'+
                     '<a href="/customerinfo/" data-fname="'+fname+'" data-lname="'+lname+'" onclick="selectMember(' + id + ')">'+
                     '<div class="item-content">'+
                     '<div class="item-media"><i class="customers-icons f7-icons">person</i></div>'+
@@ -243,6 +245,12 @@ function memberList() {
                      
                     '</div>'+
                     '</a>'+
+                    '<div class="swipeout-actions-right">'+
+                   ' <a href="#" class="mark bg-orange">Edit</a>'+
+                    '<a href="#" class="swipeout-delete swipeout-overswipe">Delete</a>'+
+                 
+                    '</div>'+
+                    '</div>'+
                   '</li>';
                     // myJson.push({ member: member,  fullname: fullname, FNAMES: member.FNAMES, LNAMES:member.LNAMES, ID: member.ID,});
                  //  myJson.push({member});
@@ -439,7 +447,7 @@ function saveMember(member) {
         tx.executeSql('INSERT INTO CUSTOMERS(ID, FNAMES, LNAMES, PHONE, EMAIL, DATE) VALUES(?, ?, ?,?,?,?)', [
             member.id, member.fname, member.lname, member.phone, member.email, member.date
         ]);
-    }, error, function () {
+    }, error, function (e) {
         app.dialog.alert("Item Saved.");
         // $$(".close, .pop-up").trigger();
         $$(".popup-backdrop").removeClass("backdrop-in");
