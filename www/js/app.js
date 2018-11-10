@@ -410,74 +410,45 @@ $$(document)
 $$(document)
     .on('page:init', '.page[data-name="catalogc"]', function (e) {
         app.purchaseOrders();
-        $$('.item-link').on('click', function(){
+        $$('.item-link').on('click', function () {
             var codeID = $$(this).attr("data-code");
             app.thisItem(codeID);
-           
+
         })
     });
 $$(document)
     .on('DOMContentLoaded', function () {
         app.purchaseOrders();
-        thisPO();
+
     });
 
-    
-    app.thisItem=function (codeID) {
-       // var purchase_orders = [{"code":"1541745596212","name":"Jane Doe","date":"Fri Nov 09 2018 14:40:03 GMT+0800 (Philippine Standard Time)-1:36","items":"<tr><td><span class=\"qant\">1</span></td><td><h3 class=\"title\" data-id=\"A0000001\">Denim Shirt</h3></td><td colspan=\"2\"><p class=\"right\"><del></del></p><p class=\"price right\">₱299.00</p></td></tr><tr class=\"total-row\"><td colspan=\"2\"> </td><td id=\"total\" class=\"total right\" colspan=\"3\">₱299.00 </td></tr>","notes":"Processing"},{"code":"1541745657473","name":"Jane Doe","date":"Fri Nov 09 2018 14:41:02 GMT+0800 (Philippine Standard Time)-18:37","items":"<tr><td><span class=\"qant\">1</span></td><td><h3 class=\"title\" data-id=\"A0000002\">Drypers Mega Pack</h3></td><td colspan=\"2\"><p class=\"right\"><del>₱630.00</del></p><p class=\"price right\">₱503.00</p></td></tr><tr><td><span class=\"qant\">1</span></td><td><h3 class=\"title\" data-id=\"A0000003\">Cool Shirt</h3></td><td colspan=\"2\"><p class=\"right\"><del></del></p><p class=\"price right\">₱99.00</p></td></tr><tr class=\"total-row\"><td colspan=\"2\"> </td><td id=\"total\" class=\"total right\" colspan=\"3\">₱602.00 </td></tr>","notes":"Processing"}];
-        var purchase_orders = JSON.parse(localStorage.getItem("txtClients"));
-        
-        var evens = _.filter(purchase_orders, function(obj) {
-            return ~obj.code.toLowerCase().indexOf(codeID);
-            
-            
-        });
-        localStorage.setItem("POselected",JSON.stringify(evens));
-       // alert(JSON.stringify(evens));
 
-        
-    }
+app.thisItem = function (codeID) {
+    // var purchase_orders = [{"code":"1541745596212","name":"Jane Doe","date":"Fri Nov 09 2018 14:40:03 GMT+0800 (Philippine Standard Time)-1:36","items":"<tr><td><span class=\"qant\">1</span></td><td><h3 class=\"title\" data-id=\"A0000001\">Denim Shirt</h3></td><td colspan=\"2\"><p class=\"right\"><del></del></p><p class=\"price right\">₱299.00</p></td></tr><tr class=\"total-row\"><td colspan=\"2\"> </td><td id=\"total\" class=\"total right\" colspan=\"3\">₱299.00 </td></tr>","notes":"Processing"},{"code":"1541745657473","name":"Jane Doe","date":"Fri Nov 09 2018 14:41:02 GMT+0800 (Philippine Standard Time)-18:37","items":"<tr><td><span class=\"qant\">1</span></td><td><h3 class=\"title\" data-id=\"A0000002\">Drypers Mega Pack</h3></td><td colspan=\"2\"><p class=\"right\"><del>₱630.00</del></p><p class=\"price right\">₱503.00</p></td></tr><tr><td><span class=\"qant\">1</span></td><td><h3 class=\"title\" data-id=\"A0000003\">Cool Shirt</h3></td><td colspan=\"2\"><p class=\"right\"><del></del></p><p class=\"price right\">₱99.00</p></td></tr><tr class=\"total-row\"><td colspan=\"2\"> </td><td id=\"total\" class=\"total right\" colspan=\"3\">₱602.00 </td></tr>","notes":"Processing"}];
+    var purchase_orders = JSON.parse(localStorage.getItem("txtClients"));
 
-
-    function thisPO(){
-       
-        /*var data =  [{"code":"1541745596212","name":"Jane Doe","date":"Fri Nov 09 2018 14:40:03 GMT+0800 (Philippine Standard Time)-1:36","items":"<tr><td><span class=\"qant\">1</span></td><td><h3 class=\"title\" data-id=\"A0000001\">Denim Shirt</h3></td><td colspan=\"2\"><p class=\"right\"><del></del></p><p class=\"price right\">₱299.00</p></td></tr><tr class=\"total-row\"><td colspan=\"2\"> </td><td id=\"total\" class=\"total right\" colspan=\"3\">₱299.00 </td></tr>","notes":"Processing"}];
-        for (var key in data) {
-            for (var i = 0; i < data[key].length; i++) {
-                var code = data[key][i].code;
-                var name = data[key][i].name;
-                var date = data[key][i].date;
-                var items = data[key][i].items;
-                alert(code);
-                $$("#poCode").html(code);
-                $$("#poName").html(name);
-
-              
-            }
-        }*/
-
-        
-       // var data =  [{"code":"1541761091501","name":"fdfsf DVSDGDGH","date":"Fri Nov 09 2018 18:58:14 GMT+0800 (Philippine Standard Time)-9:51","items":"<tr><td><span class=\"qant\">1</span></td><td><h3 class=\"title\" data-id=\"A0000002\">Drypers Mega Pack</h3></td><td colspan=\"2\"><p class=\"right\"><del>₱630.00</del></p><p class=\"price right\">₱503.00</p></td></tr><tr class=\"total-row\"><td colspan=\"2\"> </td><td id=\"total\" class=\"total right\" colspan=\"3\">₱503.00 </td></tr>","notes":"Processing"}]
-         var data = JSON.parse(localStorage.getItem("POselected"));
-        
-          $.each(data,function(i,v){
-            var shortdate = v.date.substr(0, v.date.lastIndexOf(" GMT") + 1);
-          $('#thisPOdata').html('<ul>'+
-          '<li><label>PO #:</label>'+v.code +'</li>'+
-          '<li><label>Customer:</label>'+v.name +'</li>'+
-          '<li><label>Date:</label>'+shortdate +'</li></ul>'+
-          '<div><table class="table">'+v.items +'</table></div>'        
+    var evens = _.filter(purchase_orders, function (obj) {
+        return ~obj.code.toLowerCase().indexOf(codeID);
+    });
+    localStorage.setItem("POselected", JSON.stringify(evens));
+    // alert(JSON.stringify(evens));   
+    var newdata = evens;
+    $.each(newdata, function (i, v) {
+        var shortdate = v.date.substr(0, v.date.lastIndexOf(" GMT") + 1);
+        $('#thisPOdata').html('<ul>' +
+            '<li><label>PO #:</label>' + v.code + '</li>' +
+            '<li><label>Customer:</label>' + v.name + '</li>' +
+            '<li><label>Date:</label>' + shortdate + '</li></ul>' +
+            '<div><table class="table">' + v.items + '</table></div>'
         );
-          })
-        
-    }
+    })
+}
 
-    
 
-    $$(document).on('page:init', '.page[data-name="activepo"]', function (e) {
+$$(document).on('page:init', '.page[data-name="activepo"]', function (e) {
 
-        alert('activepo');
-    });
+    alert('activepo');
+});
 //alert("catalogc");
 app.purchaseOrders = function () {
 
@@ -490,7 +461,7 @@ app.purchaseOrders = function () {
         txtClients = [];
     }
 
-   
+
     /*$$("#frmCadastro").on("submit", function () {
         if (operation == "A") {
             return Adicionar(txtClients);
@@ -501,14 +472,14 @@ app.purchaseOrders = function () {
     */
 
     $$("#frmCadastro").on("click", ".btn-submit-po", function () {
-            if (operation == "A") {
-                return Adicionar(txtClients);
+        if (operation == "A") {
+            return Adicionar(txtClients);
 
-            } else {
+        } else {
 
-                return EditItem(txtClients, index_selected);
-            }
-        });
+            return EditItem(txtClients, index_selected);
+        }
+    });
 
     List(txtClients);
     console.log('list orders');
@@ -526,7 +497,7 @@ app.purchaseOrders = function () {
                 .val(cli.cid);
             $$("#txtDate")
                 .val(cli.date);
-           
+
             $$("#txtItems")
                 .val(cli.items);
             $$("#txtNotes")
@@ -535,7 +506,7 @@ app.purchaseOrders = function () {
                 .attr("readonly", "readonly");
             $$("#txtName")
                 .focus();
-            
+
         });
 
     $$("#tblList")
@@ -556,12 +527,12 @@ app.purchaseOrders = function () {
         var timepo = localStorage.getItem("timeandponumber");
         $$("#servingpo")
             .html(timepo);
-       // app.dialog.alert(timepo + ' ' + activeCustomer);
-  
+        // app.dialog.alert(timepo + ' ' + activeCustomer);
+
 
     }
 
-   
+
 
     function Adicionar(txtClients) {
         // CustomerCartInfo();
@@ -578,7 +549,7 @@ app.purchaseOrders = function () {
                 .val(),
             notes: $$("#txtNotes").val()
         };
-      //  CustomerCartInfo();
+        //  CustomerCartInfo();
         txtClients.push(client);
         console.log("txtClients - " + txtClients);
         localStorage.setItem("txtClients", JSON.stringify(txtClients));
@@ -588,7 +559,7 @@ app.purchaseOrders = function () {
         $$('#frmCadastro')
             .hide();
         $$('.popup-backdrop').removeClass('backdrop-in');
-            
+
         app.router.navigate('/catalogc/');
         //    view1.router.refreshPage(); 
         // view1.router.loadPage({ url: '/pages/catalogc.html', reload: true });
@@ -629,15 +600,15 @@ app.purchaseOrders = function () {
         $$("#tblList")
             .html("");
         for (var i in txtClients) {
-           // var cli = JSON.parse(txtClients[i]);
-           var cli = txtClients[i];
-               // the original string
-            var olddate =  cli.date;
-                // remove everything after the last backslash
+            // var cli = JSON.parse(txtClients[i]);
+            var cli = txtClients[i];
+            // the original string
+            var olddate = cli.date;
+            // remove everything after the last backslash
             var shortdate = olddate.substr(0, olddate.lastIndexOf(" GMT") + 1);
             $$("#tblList")
-                    .append('<li>' +
-                    '<a href="#" class="item-link item-content popup-open"  data-popup="#activepo" data-code="'+ cli.code+'" alt="">' +
+                .append('<li>' +
+                    '<a href="#" class="item-link item-content popup-open"  data-popup="#activepo" data-code="' + cli.code + '" alt="">' +
                     // '<div class="item-media"><i class="icon icon-f7"></i></div>' +
                     '<div class="item-inner">' +
                     '<div class="item-title">' + cli.code + '<p><small>' + shortdate + '</small></p></div>' +
@@ -648,8 +619,8 @@ app.purchaseOrders = function () {
                 );
 
 
-           
-              
+
+
         }
     }
 }
@@ -1265,25 +1236,26 @@ app.updatePayForm = function () {
 
 $$(".btn-checkout")
     .on('click', function () {
-        
+
         app.dialog.alert('Please confirm details on the next screens.');
         console.log()
         var myCname = localStorage.getItem("fnMember");
         var myPoNumber = localStorage.getItem("timeandponumber");
         var myItems = $$("#thisCart").html();
-        
-     
+
+
         $$("#itemRecap").html(myItems);
         $$("#itemRecap tbody").addClass("cart");
+
         function Unix_timestamp(t) {
             var dt = new Date(t * 1000);
             var d = new Date();
             var hr = dt.getHours();
             var m = "0" + dt.getMinutes();
             var s = "0" + dt.getSeconds();
-          //  return dt + '-' + hr + ':' + m.substr(-2) + ':' + s.substr(-2);
-          return d + '-' + hr + ':' + m.substr(-2);
-          
+            //  return dt + '-' + hr + ':' + m.substr(-2) + ':' + s.substr(-2);
+            return d + '-' + hr + ':' + m.substr(-2);
+
         }
         var theTime = Unix_timestamp(myPoNumber);
         $$("#txtItems")
@@ -1364,30 +1336,30 @@ app.resetCart = function () {
 
 
 app.resetPOCart = function () {
-  
-        localStorage.removeItem("cart");
-        localStorage.removeItem("idMember");
-        localStorage.removeItem("grndTotal");
-        localStorage.removeItem("listHTML");
-        localStorage.removeItem("timeandponumber");
-        localStorage.removeItem("fnMember");
-        
-        $$(".cart, .mycart,.cartmemberinfo, #totalItems")
-            .html("");
 
-        //  localStorage.removeItem("purchaseorder");
-       
-        console.log("Cache is now cleared.");
-        
-       // app.router.navigate('/catalogc/');
-      /*
-        ordersView.router.navigate(ordersView.router.currentRoute.url, {
-            ignoreCache: true,
-            reloadCurrent: true
-        });*/
-      // ordersView.router.refreshPage();
-   // location.reload();
-        return true;
+    localStorage.removeItem("cart");
+    localStorage.removeItem("idMember");
+    localStorage.removeItem("grndTotal");
+    localStorage.removeItem("listHTML");
+    localStorage.removeItem("timeandponumber");
+    localStorage.removeItem("fnMember");
+
+    $$(".cart, .mycart,.cartmemberinfo, #totalItems")
+        .html("");
+
+    //  localStorage.removeItem("purchaseorder");
+
+    console.log("Cache is now cleared.");
+
+     app.router.navigate('/catalogc/');
+    /*
+      ordersView.router.navigate(ordersView.router.currentRoute.url, {
+          ignoreCache: true,
+          reloadCurrent: true
+      });*/
+    // ordersView.router.refreshPage();
+    location.reload();
+   // return true;
 
 }
 /************************************* */
@@ -1479,14 +1451,14 @@ btns.on("click", function () {
 //  $$(document).ready(function () {
 $$(document).on('DOMContentLoaded', function () {
 
-        app.init();
-        app.updatePayForm();
-        app.createProducts();
-        app.getProducts();
-     
-        currency_icon = '₱';
-        localStorage.setItem("myCurrency", currency_icon);
-       
-    });
+    app.init();
+    app.updatePayForm();
+    app.createProducts();
+    app.getProducts();
+
+    currency_icon = '₱';
+    localStorage.setItem("myCurrency", currency_icon);
+
+});
 
 /**************************************** CART */
