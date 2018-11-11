@@ -26,9 +26,9 @@ $$(document).on('DOMContentLoaded', function () {
     $$(document).on('page:init', '.page[data-name="catalogb"]', function (e) {
      // app.dialog.alert("catalogb");
         memberList();
-        app.preloader.show();
+       // app.preloader.show();
         setTimeout(function () {
-            app.preloader.hide();
+           // app.preloader.hide();
             memberList();
 
         }, 3000);
@@ -171,7 +171,7 @@ $$(document).on('DOMContentLoaded', function () {
 
 
     $$('#btnStore').on('click', function () {
-        app.loadStore();
+       // app.loadStore();
     });
 
 });
@@ -473,7 +473,8 @@ function saveOrderLocal(order) {
 
 
 function selectMember(idMember) {
-    
+    app.preloader.show();
+                     setTimeout(function () {
     // localStorage.setItem("customer-name",idMember);
     db.readTransaction(function (t) {
         var memberHtml = $$('#customerInfo');
@@ -482,6 +483,7 @@ function selectMember(idMember) {
                 memberHtml.html("");
                 if (rs.rows.length > 0) {
                    
+                      
                     var member = new Object();
                     member.id = rs.rows.item(0).ID;
                     member.fname = rs.rows.item(0).FNAMES;
@@ -494,6 +496,11 @@ function selectMember(idMember) {
                      $$('#lname').val(rs.rows.item(0).LNAMES);
                      $$('#phone').val(rs.rows.item(0).PHONE);
                      $$('#email').val(rs.rows.item(0).EMAIL);*/
+                   
+                        
+                     
+                           
+                      
                      memberHtml.html('<li>' +
                         '<div class="item-content">' +
                         '<div class="item-media"><i class="material-icons">person</i></div>' +
@@ -540,12 +547,15 @@ function selectMember(idMember) {
                         '<div class="item-after"></div>' +
                         '</div>' +
                         '</div>' +
-                        '</li>')
-
+                        '</li>');
+                       
 
                 }
             }, error);
+            
     });
+    app.preloader.hide();
+}, 1000)
 }
 
 /*
