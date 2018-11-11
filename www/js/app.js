@@ -435,11 +435,11 @@ app.thisItem = function (codeID) {
     var newdata = evens;
     $.each(newdata, function (i, v) {
         var shortdate = v.date.substr(0, v.date.lastIndexOf(" GMT") + 1);
-        $('#thisPOdata').html('<ul>' +
+        $('#thisPOdata').html('<div class="block"><ul>' +
             '<li><label>PO #:</label>' + v.code + '</li>' +
             '<li><label>Customer:</label>' + v.name + '</li>' +
             '<li><label>Date:</label>' + shortdate + '</li></ul>' +
-            '<div><table class="table">' + v.items + '</table></div>'
+            '<div><table class="table">' + v.items + '</table></div></div>'
         );
     })
 }
@@ -611,7 +611,7 @@ app.purchaseOrders = function () {
                     '<a href="#" class="item-link item-content popup-open"  data-popup="#activepo" data-code="' + cli.code + '" alt="">' +
                     // '<div class="item-media"><i class="icon icon-f7"></i></div>' +
                     '<div class="item-inner">' +
-                    '<div class="item-title">' + cli.code + '<p><small>' + shortdate + '</small></p></div>' +
+                    '<div class="item-title">' + cli.name + '<p><small>' + shortdate + '</small></p></div>' +
                     '<div class="item-after"><span class="badge">' + cli.notes + '</span></div>' +
                     '</div>' +
                     '</a>' +
@@ -1220,7 +1220,7 @@ app.updatePayForm = function () {
         _.forEach(cart.items, function (prod, key) {
             dinamic += '<input type="hidden" name="item_name_' + i + '" value="' + prod.name + '">'
             dinamic += '<input type="hidden" name="amount_' + i + '" value="' + prod.price + '">'
-            dinamic += '<input type="hidden" name="iuem_sku_' + i + '" value="' + prod.sku + '">'
+            dinamic += '<input type="hidden" name="item_sku_' + i + '" value="' + prod.sku + '">'
             dinamic += '<input type="hidden" name="item_number_' + i + '" value="' + prod.id + '" />'
             dinamic += '<input type="hidden" name="quantity_' + i + '" value="' + prod.cant + '" />'
             dinamic += '<input type="hidden" class="grndTotal" name="total_' + i + '" value="' + grandtotal + '" />' // added by jrn
