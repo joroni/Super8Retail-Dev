@@ -11,7 +11,7 @@
       <div class="list links-list">
           <ul id="categories">
             {{#each products}}
-                <li><a class="category" href="/catalog/{{cat}}/">{{cat}}</a></li>
+                <li><a class="category" data-cat="{{cat}}" href="/catalog/{{cat}}/">{{cat}}</a></li>
             {{/each}}
           </ul>
         </div>
@@ -20,7 +20,25 @@
 </template>
 
 <script>
-    
+ /*   var students = [
+  { name: "John", grades: [7.0, 6.9, 8.0], class: "A" },
+  { name: "Paul", grades: [5.0, 8.7, 3.7], class: "A" },
+  { name: "Luke", grades: [9.0, 8.2, 6.2], class: "B" },
+  { name: "Mark", grades: [6.0, 9.0, 8.4], class: "B" }
+];
+
+var sum = function (numbers) { return _.reduce(numbers, function (sum, n) { return sum + n }, 0) }
+var average = function (numbers) { return sum(numbers) / numbers.length }
+var isApproved = function (student) { return average(student.grades) >= 7 }
+console.log(students);
+
+var approvedStudents = _.filter(students, isApproved)
+// approvedStudents = _.map(approvedStudents, function (s) { return s.name })
+  approvedStudents = _.pluck(approvedStudents, 'name')
+
+
+console.log(JSON.stringify(approvedStudents));*/
+
 
   return {
     data: function () {
