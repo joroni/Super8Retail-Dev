@@ -7,7 +7,7 @@ var orderItems = localStorage.getItem("txtClients");
 var customers = localStorage.getItem("customers");
 var app = new Framework7({
     root: '#app', // App root element
-    id: 'io.framework7.testapp', // App bundle ID
+    id: 'io.super8.super8app', // App bundle ID
     name: 'Super8', // App name
     theme: 'auto', // Automatic theme detection
     pushState: true,
@@ -282,17 +282,17 @@ $$('a.category')
 $$(document)
     .on('page:init', '.page[data-name="catalog"]', function (e) {
         //  app.createProducts();
-        app.loadStore(); // Show preloader before Ajax request
+      //  app.loadStore(); // Show preloader before Ajax request
         //  app.preloader.show();
         // Perform Ajax request
         /* app.request.get('someurl.html', function (data) {
            // Hide preloader when Ajax request completed
            app.preloader.hide();
          });*/
-        app.preloader.show();
+       // app.preloader.show();
         setTimeout(function () {
-            app.preloader.hide();
-            app.loadStore();
+          //  app.preloader.hide();
+       //     app.loadStore();
         }, 800);
         console.log("Catalog");
         app.addToMyCart = function (id) {
@@ -419,6 +419,7 @@ $$(document)
 $$(document)
     .on('DOMContentLoaded', function () {
         app.purchaseOrders();
+        
 
     });
 
@@ -433,6 +434,7 @@ app.thisItem = function (codeID) {
     localStorage.setItem("POselected", JSON.stringify(evens));
     // alert(JSON.stringify(evens));   
     var newdata = evens;
+   
     $.each(newdata, function (i, v) {
         var shortdate = v.date.substr(0, v.date.lastIndexOf(" GMT") + 1);
         $('#thisPOdata').html('<div class="block"><ul>' +
@@ -442,6 +444,8 @@ app.thisItem = function (codeID) {
             '<div><table class="table">' + v.items + '</table></div></div>'
         );
     })
+
+    $$(".table tbody").addClass("cart");
 }
 
 
@@ -607,7 +611,7 @@ app.purchaseOrders = function () {
             // remove everything after the last backslash
             var shortdate = olddate.substr(0, olddate.lastIndexOf(" GMT") + 1);
             $$("#tblList")
-                .append('<li>' +
+                .append('<li id="'+i+'">' +
                     '<a href="#" class="item-link item-content popup-open"  data-popup="#activepo" data-code="' + cli.code + '" alt="">' +
                     // '<div class="item-media"><i class="icon icon-f7"></i></div>' +
                     '<div class="item-inner">' +
@@ -630,10 +634,10 @@ app.purchaseOrders = function () {
 
 $$(document)
     .on('page:init', '.page[data-name="homes"]', function (e) {
-        app.loadStore();
+       // app.loadStore();
 
     });
-$$(document)
+/*$$(document)
     .on('page:init', '.page[data-name="catalog"]', function (e) {
         //  app.createProducts();
         app.loadStore(); // Show preloader before Ajax request
@@ -642,7 +646,7 @@ $$(document)
         /* app.request.get('someurl.html', function (data) {
            // Hide preloader when Ajax request completed
            app.preloader.hide();
-         });*/
+         });*\/
         app.preloader.show();
         setTimeout(function () {
             app.preloader.hide();
@@ -770,14 +774,14 @@ $$(document)
             app.updatePayForm();
         }
     });
-
+*/
 $$(document)
     .on('page:init', '.page[data-page="category"]', function (e) {
-        app.loadStore();
+      //  app.loadStore();
         console.log('Category');
     });
 /**************************************** CART */
-app.loadStore = function () {}
+//app.loadStore = function () {}
 var business_paypal = '', // aquí va tu correo electrónico de paypal
     currency_icon = '₱';
 mockIdSalesMngr = '1111111111111';
@@ -1136,7 +1140,7 @@ app.getProducts = function () {
             items += '<tr>'
             //items += '<td><img src="'+n.img+'" /></td>'
             items += '<td><span class="qant">' + n.cant + '</span></td>'
-            items += '<td><h3 class="title" data-id="' + n.sku + '">' + n.name + '</h3></td>'
+            items += '<td><h3 class="title" data-sku="' + n.sku + '">' + n.name + '</h3></td>'
             items += '<td colspan="2"><p class="right"><del>' + oldpricing + '</del></p>'
             items += '<p class="price right">' + currency_icon + '' + n.price.toFixed(2) + '</p></td>'
             items += '</tr>';
@@ -1204,14 +1208,17 @@ app.deleteProd = function (id, remove) {
 app.updatePayForm = function () {
     //eso va a generar un formulario dinamico para paypal
     //con los products y sus precios
+   
     var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {
         items: []
     };
     localStorage.setItem("purchaseorder", JSON.stringify(cart));
     var grandtotal = localStorage.getItem("grndTotal");
-
+    var activeCustomer = localStorage.getItem("fnMember");
+      
+    var timepo = localStorage.getItem("timeandponumber");
     //var statics = '<form action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_cart"><input type="hidden" name="upload" value="1"><input type="hidden" name="currency_code" value="USD" /><input type="hidden" name="business" value="' + business_paypal + '">',
-    var statics = '<form  method="post"><input type="hidden" name="cmd" value="_cart"><input type="hidden" name="upload" value="1"><input type="hidden" name="currency_code" value="PHP" /><input type="hidden" name="business" value="SUPER 8"><input type="hidden" name="grandtotal" class="grandtotal" value="' + grandtotal + '">',
+    var statics = '<form  method="post"><input type="hidden" name="customer" value="'+activeCustomer+'"><input type="hidden" name="upload" value="1"><input type="hidden" name="currency_code" value="PHP" /><input type="hidden" name="pocode" value="'+timepo+'"><input type="hidden" name="grandtotal" class="grandtotal" value="' + grandtotal + '">',
         dinamic = '',
         wrapper = $$('.submitForm')
     wrapper.html('')
@@ -1246,6 +1253,7 @@ $$(".btn-checkout")
 
         $$("#itemRecap").html(myItems);
         $$("#itemRecap tbody").addClass("cart");
+        
 
         function Unix_timestamp(t) {
             var dt = new Date(t * 1000);
@@ -1453,7 +1461,7 @@ $$(document).on('DOMContentLoaded', function () {
 
     app.init();
     app.updatePayForm();
-    app.createProducts();
+  //  app.createProducts();
     app.getProducts();
 
     currency_icon = '₱';
