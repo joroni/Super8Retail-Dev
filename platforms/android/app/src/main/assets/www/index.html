@@ -162,7 +162,9 @@
                 </div>
                 <div class="col-50 tablet-25">
                   <div class="card">
-                    <div class="card-content card-content-padding color-white no-border" valign="bottom" style="background-image:url(img/products/btn-4.jpg); background-size:contain; height:170px;">CREATE</div>
+                    <a href="/catalogb/">
+                      <div class="card-content card-content-padding color-white no-border" valign="bottom" style="background-image:url(img/products/btn-4.jpg); background-size:contain; height:170px;">CREATE</div>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -191,9 +193,94 @@
     <div id="view-store" class="view tab">
       <!-- Customers page will be loaded here dynamically from /customers/ route -->
     </div>
+
+     <!-- Popup Products -->
+     <div class="popup" id="activepo">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/cart.css">
+        <link href="css/mdb.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/store.css">
+        <div class="view">
+          <div class="page" data-name="activepo">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left">
+                  <a href="#" class="link popup-close"><i class="icon icon-back"></i></a>
+                </div>
+                <div class="title">Order Details</div>
+              </div>
+            </div>
+            <div class="page-content" style="padding-top:30px;">
+              <div class="block-title"></div>
+              <div class="list simple-list"  id="thisPOdata">
+                <ul>
+                  <li>
+                    <div class="item-content item-input">
+                      <div class="item-inner">
+                        <div class="item-title item-label">Name</div>
+                        <div  id="poName" class="item-input-wrap">
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content item-input">
+                      <div class="item-inner">
+                        <div class="item-title item-label">PO #</div>
+                        <div id="poCode" class="item-input-wrap">
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content item-input">
+                      <div class="item-inner">
+                        <div class="item-title item-label">Notes</div>
+                        <div id="poNotes" class="item-input-wrap">
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content item-input">
+                      <div class="item-inner">
+                        <div class="item-title item-label">Date</div>
+                        <div id="poDate" class="item-input-wrap">
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+  
+               
+                  <li>
+                    <div class="block">
+                      <table id="poItems" class="table table-hover">
+  
+                      </table>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="block">
+                      <!--  <button type="submit" class="submit btn-submit-po col button button-big button-fill button-raised">Submit</button>-->
+                      <a href="#" class="submit btn-submit-po col button button-big button-fill button-raised">Submit</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
     <!-- Popup Products -->
     <div class="popup" id="frmCadastro">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link href="css/bootstrap.min.css" rel="stylesheet">
       <link rel="stylesheet" href="css/cart.css">
       <link href="css/mdb.min.css" rel="stylesheet">
       <link rel="stylesheet" href="css/store.css">
@@ -208,74 +295,74 @@
             </div>
           </div>
           <div class="page-content" style="padding-top:30px;">
-              <div class="list no-hairlines-md">
-                  <ul>
-                    <li>
-                      <div class="item-content item-input">
-                        <div class="item-inner">
-                          <div class="item-title item-label">Name</div>
-                          <div class="item-input-wrap">
-                            <input id="txtName" readonly type="text" placeholder="Your name"/>
-                          </div>
-                        </div>
+            <div class="list no-hairlines-md">
+              <ul>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Name</div>
+                      <div class="item-input-wrap">
+                        <input id="txtName" readonly type="text" placeholder="Your name" />
                       </div>
-                    </li>
-                    <li>
-                      <div class="item-content item-input">
-                        <div class="item-inner">
-                          <div class="item-title item-label">PO #</div>
-                          <div class="item-input-wrap">
-                            <input id="txtCode"readonly  type="text" placeholder="PO Number"/>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="item-content item-input">
-                        <div class="item-inner">
-                          <div class="item-title item-label">Notes</div>
-                          <div class="item-input-wrap">
-                            <input id="txtNotes"readonly type="text" value="Processing"/>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="item-content item-input">
-                        <div class="item-inner">
-                          <div class="item-title item-label">Date</div>
-                          <div class="item-input-wrap">
-                            <input id="txtDate" readonly type="text" placeholder="Date"/>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                   
-                    <li class="hidden">
-                      <div class="item-content item-input">
-                        <div class="item-inner">
-                          <div class="item-title item-label">Items</div>
-                          <div class="item-input-wrap">
-                            <textarea id="txtItems" type="text" ></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="block">
-                        <table id="itemRecap" class="table table-hover">
-                         
-                      </table>
                     </div>
-                      </li>
-                    <li>
-                        <div class="block">
-                  <!--  <button type="submit" class="submit btn-submit-po col button button-big button-fill button-raised">Submit</button>-->
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">PO #</div>
+                      <div class="item-input-wrap">
+                        <input id="txtCode" readonly type="text" placeholder="PO Number" />
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Notes</div>
+                      <div class="item-input-wrap">
+                        <input id="txtNotes" readonly type="text" value="Processing" />
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Date</div>
+                      <div class="item-input-wrap">
+                        <input id="txtDate" readonly type="text" placeholder="Date" />
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="hidden">
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Items</div>
+                      <div class="item-input-wrap">
+                        <textarea id="txtItems" type="text"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="block">
+                    <table id="itemRecap" class="table table-hover">
+
+                    </table>
+                  </div>
+                </li>
+                <li>
+                  <div class="block">
+                    <!--  <button type="submit" class="submit btn-submit-po col button button-big button-fill button-raised">Submit</button>-->
                     <a href="#" class="submit btn-submit-po col button button-big button-fill button-raised">Submit</a>
-                </div>
-                    </li>
-                  </ul>
-                </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
             <br>
           </div>
         </div>
@@ -335,16 +422,6 @@
                 <li>
                   <div class="item-content item-input">
                     <div class="item-inner">
-                      <div class="item-title item-label">Birth date</div>
-                      <div class="item-input-wrap">
-                        <input type="date" id="birthdate" name="birthdate" placeholder="Birth day" value="2014-04-30" />
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="item-content item-input">
-                    <div class="item-inner">
                       <div class="item-title item-label">Email</div>
                       <div class="item-input-wrap">
                         <input type="email" id="email" name="email" />
@@ -352,6 +429,17 @@
                     </div>
                   </div>
                 </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Date</div>
+                      <div class="item-input-wrap">
+                        <input type="date" id="date" name="date" placeholder="Date" value="2014-04-30" />
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
                 <li>
                   <div class="item-content item-input">
                     <div class="item-inner">
@@ -480,7 +568,7 @@
               <div class="block submitBtn">
                 <!--<a href="#" class="button form-to-data button btn-checkout button-raised button-fill popup-open"
                   data-popup="#my-order-popup">CHECKOUT</a>-->
-                  <a href="#" class="button form-to-data button btn-checkout button-raised button-fill popup-open"
+                <a href="#" class="button form-to-data button btn-checkout button-raised button-fill popup-open"
                   data-popup="#frmCadastro">CHECKOUT</a>
               </div>
               <br>
