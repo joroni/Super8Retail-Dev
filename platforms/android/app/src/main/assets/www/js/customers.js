@@ -47,7 +47,7 @@ $$(document).on('DOMContentLoaded', function () {
             var txtLname = $$('#lname');
             var txtPhone = $$('#phone');
             var txtEmail = $$('#email');
-            var txtBirthdate = $$('#date');
+            var txtDate = $$('#date');
     
            // var input = $$('input');
     
@@ -63,7 +63,7 @@ $$(document).on('DOMContentLoaded', function () {
             member.lname = txtLname.val();
             member.phone = txtPhone.val();
             member.email = txtEmail.val();
-            member.date = txtBirthdate.val();
+            member.date = txtDate.val();
     
     
     
@@ -82,7 +82,7 @@ $$(document).on('DOMContentLoaded', function () {
             txtLname.val(null);
             txtPhone.val(null);
             txtEmail.val(null);
-            txtBirthdate.val(null);
+            txtDate.val(null);
             txtId.val(null);
         });
     

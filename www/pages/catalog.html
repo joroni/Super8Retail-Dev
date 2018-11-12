@@ -6,10 +6,11 @@
       </div>
     </div>
     <div class="page-content">
-
+        <div class="list list-block media-list">
         <ul id="productCatalog">
           </ul>
-      <div class="list list-block media-list">
+        </div>
+     <!-- <div class="list list-block media-list">
         <ul>
           {{#each fproducts}}
           <li class="swipeout">
@@ -21,7 +22,7 @@
                     <div class="item-title">{{title}}</div>
                     <div class="item-after"><del>₱{{oldprice}}</del>&nbsp; <span>₱{{price}}</span></div>
                   </div>
-                  <!--<div class="item-subtitle"><a href=""><span class="mybadge badge {{statecolor}} mr-1">{{state}}</span></a></div>-->
+                  <!-<div class="item-subtitle"><a href=""><span class="mybadge badge {{statecolor}} mr-1">{{state}}</span></a></div>->
                   <div class="item-text">{{desc}}</div>
                 </div>
               </a>
@@ -31,7 +32,7 @@
                   <div class="stepper-input-wrap">
                     <input type="number" id="prod_{{id}}" readonly name="quant[{{id}}]" class="form-control input-number quantity manage-qtty" value="0" min="0" max="100">
                   </div>
-                 <!-- <div class="stepper-button-plus prod_{{id}}" onclick="app.addToCart('{{id}}')"></div>-->
+                 <!- <div class="stepper-button-plus prod_{{id}}" onclick="app.addToCart('{{id}}')"></div>->
                  <div class="stepper-button-plus prod_{{id}}" data-id="plus_{{id}}" onclick="app.addToMyCart({{id}})"></div>
                 </div>
               </div>
@@ -40,7 +41,7 @@
           </li>
           {{/each}}
         </ul>
-      </div>
+      </div>-->
     </div>
   </div>
 </template>
