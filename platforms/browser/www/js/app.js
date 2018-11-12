@@ -311,9 +311,16 @@ $$(document)
                 category = $$(this).attr("data-cat");
                 console.log('caT', category);
                 itemsArr = JSON.parse(localStorage.getItem("products"));
+                if(itemsArr ==='' || itemsArr === undefined || itemsArr.length <=0){
+                    app.preloader.show();
+                }else{
+                    app.preloader.hide();
+               
                 var filter = [category];
                 console.log('Filter', filter);
+
                 var data = {};
+
                 _.each(filter, function (item) {
                     data[item] = true;
                 });
@@ -325,19 +332,19 @@ $$(document)
                 localStorage.setItem("filter_prod",JSON.stringify(returnData));
                // var fproducts = localStorage.getItem("filter_prod");
                var fproducts =returnData;
-                console.log(JSON.stringify(returnData));
+                console.log(JSON.stringify(fproducts));
 
+            }
 
-
-
+                app.preloader.show();
+                setTimeout(function () {
+                   app.preloader.hide();
                 $$("#productCatalog").html("");
                 var filteredProd = '';
                 for (i = 0; i < fproducts.length; i++) {
                     var cli = fproducts[i];
                    // filteredProd += '<li>'+fproducts[i].title+'</li>';
-                   app.preloader.show();
-                   setTimeout(function () {
-                      app.preloader.hide();
+                  
                    filteredProd += '<li class="swipeout">'+
                     '<div class="swipeout-content" data-id="'+cli.id+'">'+
                       '<a href="/product/'+cli.id+'/" class="item-link item-content">'+
@@ -361,11 +368,11 @@ $$(document)
                       '</div>'+         
                   '</li>';
                  
-                    $$("#productCatalog").html(filteredProd);
-                }, 800);
+                 
                    
                 }
-          
+                $$("#productCatalog").html(filteredProd);
+            }, 800);
             });
        
         

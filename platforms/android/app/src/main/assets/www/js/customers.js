@@ -456,24 +456,35 @@ function saveOrderLocal(order) {
 
 
 function selectMember(idMember) {
+    app.preloader.show();
+                     setTimeout(function () {
     // localStorage.setItem("customer-name",idMember);
     db.readTransaction(function (t) {
-        t.executeSql('SELECT ID, FNAMES, LNAMES , PHONE, EMAIL FROM CUSTOMERS WHERE ID = ?', [idMember],
+        var memberHtml = $$('#customerInfo');
+        t.executeSql('SELECT ID, FNAMES, LNAMES , PHONE, EMAIL, DATE FROM CUSTOMERS WHERE ID = ?', [idMember],
             function (t, rs) {
+                memberHtml.html("");
                 if (rs.rows.length > 0) {
-                    var lisHtml = '';
+                   
+                      
                     var member = new Object();
                     member.id = rs.rows.item(0).ID;
                     member.fname = rs.rows.item(0).FNAMES;
                     member.lname = rs.rows.item(0).LNAMES;
                     member.phone = rs.rows.item(0).PHONE;
                     member.email = rs.rows.item(0).EMAIL;
+                    member.date = rs.rows.item(0).DATE;
                     /* $$('#txt-id').val(rs.rows.item(0).ID);
                      $$('#fname').val(rs.rows.item(0).FNAMES);
                      $$('#lname').val(rs.rows.item(0).LNAMES);
                      $$('#phone').val(rs.rows.item(0).PHONE);
                      $$('#email').val(rs.rows.item(0).EMAIL);*/
-                    $$('#customerInfo').html('<li>' +
+                   
+                        
+                     
+                           
+                      
+                     memberHtml.html('<li>' +
                         '<div class="item-content">' +
                         '<div class="item-media"><i class="material-icons">person</i></div>' +
                         '<div class="item-inner">' +
@@ -503,19 +514,33 @@ function selectMember(idMember) {
                         '</li>' +
                         '<li>' +
                         '<div class="item-content">' +
+                        '<div class="item-media"><i class="f7-icons">email</i></div>' +
+                        '<div class="item-inner">' +
+                        '<div class="item-title">' + rs.rows.item(0).DATE + '</div>' +
+                        '<div class="item-after"></div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</li>' +
+                        
+                        '<li>' +
+                        '<div class="item-content">' +
                         '<div class="item-media"><i class="f7-icons">card</i></div>' +
                         '<div class="item-inner">' +
                         '<div class="item-title">' + rs.rows.item(0).ID + '<input id="memberID" type="hidden" value="' + rs.rows.item(0).ID + '"/></div>' +
                         '<div class="item-after"></div>' +
                         '</div>' +
                         '</div>' +
-                        '</li>')
-
+                        '</li>');
+                       
 
                 }
             }, error);
+            
     });
+    app.preloader.hide();
+}, 1000)
 }
+
 
 /*
 
