@@ -5,168 +5,170 @@ var $$ = Dom7;
 //var orderItems = JSON.parse(localStorage.getItem("txtClients"));
 var orderItems = localStorage.getItem("txtClients");
 var customers = localStorage.getItem("customers");
-var dynamicproducts =  [{
-    id: '1',
-    sku: 'A0000001',
-    title: 'Denim Shirt',
-    cat: 'Sports Wear',
-    state: 'New',
-    statecolor: 'red',
-    size: '',
-    img: 'img/products/12.jpg',
-    oldprice: '',
-    price: 299.00,
-    desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-    stock: 4,
-    cname: '',
-    check: '',
-    select: '',
-    notes: '',
-    email: '',
-    smname: '',
-    timestamp: '',
-    ponumber: '',
-    total: ''
-},
-{
-    id: '2',
-    sku: 'A0000002',
-    title: 'Drypers Mega Pack',
-    cat: 'Baby',
-    state: 'Sale',
-    statecolor: 'green',
-    size: 'Large x 62 pcs',
-    img: 'img/products/baby.jpg',
-    oldprice: 630.00,
-    price: 503.00,
-    desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-    stock: 2,
-    cname: '',
-    check: '',
-    select: '',
-    notes: '',
-    email: '',
-    smname: '',
-    timestamp: '',
-    ponumber: '',
-    total: ''
-},
-{
-    id: '3',
-    sku: 'A0000003',
-    title: 'Cool Shirt',
-    cat: 'Out Wear',
-    state: '',
-    statecolor: '',
-    size: '',
-    img: 'img/products/14.jpg',
-    oldprice: '',
-    price: 99.00,
-    desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-    stock: 1,
-    cname: '',
-    check: '',
-    select: '',
-    notes: '',
-    email: '',
-    smname: '',
-    timestamp: '',
-    ponumber: '',
-    total: ''
-},
-{
-    id: '4',
-    sku: 'A0000004',
-    title: '137 Degrees Iced Coffee Latte with Almond Milk Drink',
-    cat: 'Coffee',
-    state: '',
-    statecolor: '',
-    size: '3 pcs x 180 ml',
-    img: 'img/products/coffee.jpg',
-    oldprice: '',
-    price: 80.00,
-    desc: 'Perfect iced coffee latte with almond milk',
-    stock: 50,
-    cname: '',
-    check: '',
-    select: '',
-    notes: '',
-    email: '',
-    smname: '',
-    timestamp: '',
-    ponumber: '',
-    total: ''
-},
-{
-    id: '5',
-    sku: 'A0000005',
-    title: 'Gingen Strong Ginger Formula Tea',
-    cat: 'Tea',
-    state: 'Best Seller',
-    size: '',
-    statecolor: 'blue',
-    img: 'img/products/tea.jpg',
-    oldprice: '',
-    price: 440.00,
-    desc: 'Hot drink with slightly sweet and strong taste from aged quality ginger',
-    stock: 20,
-    cname: '',
-    check: '',
-    select: '',
-    notes: '',
-    email: '',
-    smname: '',
-    timestamp: '',
-    ponumber: '',
-    total: ''
-},
-{
-    id: '6',
-    sku: 'A0000006',
-    title: 'Cool Shirt',
-    cat: 'Out Wear',
-    state: '',
-    statecolor: '',
-    size: '3 pcs x 180 ml',
-    img: 'img/products/15.jpg',
-    oldprice: '',
-    price: 80.00,
-    desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-    stock: 8,
-    cname: '',
-    check: '',
-    select: '',
-    notes: '',
-    email: '',
-    smname: '',
-    timestamp: '',
-    ponumber: '',
-    total: ''
-},
-{
-    id: '7',
-    sku: 'A0000007',
-    title: 'Nice Shirt',
-    cat: 'Out Wear',
-    state: '',
-    statecolor: '',
-    size: '3 pcs x 180 ml',
-    img: 'img/products/15.jpg',
-    oldprice: '',
-    price: 70.00,
-    desc: '5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-    stock: 8,
-    cname: '',
-    check: '',
-    select: '',
-    notes: '',
-    email: '',
-    smname: '',
-    timestamp: '',
-    ponumber: '',
-    total: ''
-}];
-localStorage.setItem("products", JSON.stringify(dynamicproducts));
+var dynamicproducts = [{
+        id: '1',
+        sku: 'A0000001',
+        title: 'Denim Shirt',
+        cat: 'Sports Wear',
+        state: 'New',
+        statecolor: 'red',
+        size: '',
+        img: 'img/products/12.jpg',
+        oldprice: '',
+        price: 299.00,
+        desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+        stock: 4,
+        cname: '',
+        check: '',
+        select: '',
+        notes: '',
+        email: '',
+        smname: '',
+        timestamp: '',
+        ponumber: '',
+        total: ''
+    },
+    {
+        id: '2',
+        sku: 'A0000002',
+        title: 'Drypers Mega Pack',
+        cat: 'Baby',
+        state: 'Sale',
+        statecolor: 'green',
+        size: 'Large x 62 pcs',
+        img: 'img/products/baby.jpg',
+        oldprice: 630.00,
+        price: 503.00,
+        desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+        stock: 2,
+        cname: '',
+        check: '',
+        select: '',
+        notes: '',
+        email: '',
+        smname: '',
+        timestamp: '',
+        ponumber: '',
+        total: ''
+    },
+    {
+        id: '3',
+        sku: 'A0000003',
+        title: 'Cool Shirt',
+        cat: 'Out Wear',
+        state: '',
+        statecolor: '',
+        size: '',
+        img: 'img/products/14.jpg',
+        oldprice: '',
+        price: 99.00,
+        desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+        stock: 1,
+        cname: '',
+        check: '',
+        select: '',
+        notes: '',
+        email: '',
+        smname: '',
+        timestamp: '',
+        ponumber: '',
+        total: ''
+    },
+    {
+        id: '4',
+        sku: 'A0000004',
+        title: '137 Degrees Iced Coffee Latte with Almond Milk Drink',
+        cat: 'Coffee',
+        state: '',
+        statecolor: '',
+        size: '3 pcs x 180 ml',
+        img: 'img/products/coffee.jpg',
+        oldprice: '',
+        price: 80.00,
+        desc: 'Perfect iced coffee latte with almond milk',
+        stock: 50,
+        cname: '',
+        check: '',
+        select: '',
+        notes: '',
+        email: '',
+        smname: '',
+        timestamp: '',
+        ponumber: '',
+        total: ''
+    },
+    {
+        id: '5',
+        sku: 'A0000005',
+        title: 'Gingen Strong Ginger Formula Tea',
+        cat: 'Tea',
+        state: 'Best Seller',
+        size: '',
+        statecolor: 'blue',
+        img: 'img/products/tea.jpg',
+        oldprice: '',
+        price: 440.00,
+        desc: 'Hot drink with slightly sweet and strong taste from aged quality ginger',
+        stock: 20,
+        cname: '',
+        check: '',
+        select: '',
+        notes: '',
+        email: '',
+        smname: '',
+        timestamp: '',
+        ponumber: '',
+        total: ''
+    },
+    {
+        id: '6',
+        sku: 'A0000006',
+        title: 'Cool Shirt',
+        cat: 'Out Wear',
+        state: '',
+        statecolor: '',
+        size: '3 pcs x 180 ml',
+        img: 'img/products/15.jpg',
+        oldprice: '',
+        price: 80.00,
+        desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+        stock: 8,
+        cname: '',
+        check: '',
+        select: '',
+        notes: '',
+        email: '',
+        smname: '',
+        timestamp: '',
+        ponumber: '',
+        total: ''
+    },
+    {
+        id: '7',
+        sku: 'A0000007',
+        title: 'Nice Shirt',
+        cat: 'Out Wear',
+        state: '',
+        statecolor: '',
+        size: '3 pcs x 180 ml',
+        img: 'img/products/15.jpg',
+        oldprice: '',
+        price: 70.00,
+        desc: '5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+        stock: 8,
+        cname: '',
+        check: '',
+        select: '',
+        notes: '',
+        email: '',
+        smname: '',
+        timestamp: '',
+        ponumber: '',
+        total: ''
+    }
+];
+//localStorage.setItem("products", JSON.stringify(dynamicproducts));
+
 
 var app = new Framework7({
     root: '#app', // App root element
@@ -183,63 +185,9 @@ var app = new Framework7({
             // productbs: JSON.parse(customers),
             // productbs: [{"id":1,"cid":1540562584936,"title":"John","fname":"Doe","phone":"12345646","description":"john.doe@email.com"},{"id":2,"cid":1540818411406,"title":"Melissa","fname":"De Leon","phone":"093482940","description":"2014-04-30"},{"id":3,"cid":1540825840882,"title":"Joanne","fname":"Amparo","phone":"123456789","description":"2014-04-08"},{"id":4,"cid":1540918462991,"title":"JKJk","fname":"weieoidfp","phone":"12459","description":"2014-04-30"}],
             productcs: JSON.parse(orderItems),
-            //productbs:["{\"Code\":\"1\",\"Name\":\"User\",\"Cid\":\"12345\",\"Date\":\"10-28-18\",\"Items\":\"Test\"}"],
-            //productbs: ["{\"id\":\"1\",\"cid\":\"3495894823022\",\"title\":\"Test User1\",\"Date\":\"10-20.18\",\"Items\":\"<table>   <tbody><tr>     <th>Name</th>   </tr>     </tbody><tbody id=\\\"countries\\\"><tr><td>France</td><td><button onclick=\\\"app.Edit(0)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(0)\\\">Delete</button></td></tr><tr><td>Germany</td><td><button onclick=\\\"app.Edit(1)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(1)\\\">Delete</button></td></tr><tr><td>England</td><td><button onclick=\\\"app.Edit(2)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(2)\\\">Delete</button></td></tr><tr><td>Spain</td><td><button onclick=\\\"app.Edit(3)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(3)\\\">Delete</button></td></tr><tr><td>Belgium</td><td><button onclick=\\\"app.Edit(4)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(4)\\\">Delete</button></td></tr><tr><td>Italy</td><td><button onclick=\\\"app.Edit(5)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(5)\\\">Delete</button></td></tr><tr><td>Portugal</td><td><button onclick=\\\"app.Edit(6)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(6)\\\">Delete</button></td></tr><tr><td>Irland</td><td><button onclick=\\\"app.Edit(7)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(7)\\\">Delete</button></td></tr><tr><td>Luxembourg</td><td><button onclick=\\\"app.Edit(8)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(8)\\\">Delete</button></td></tr></tbody> </table>\"}"],
-            // productbs: [customers],
-            /*items: [{
-                    id: '1',
-                    title: 'John',
-                    fname: 'Dough',
-                    phone: '0995475142',
-                    desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis.',
-                    birth_month: '11',
-                    birth_day: '12',
-                    birth_yr: '1982',
-                    add_street: 'Taylo Street',
-                    add_unit: 'Unit 1 Dough Apartments',
-                    add_city: 'Quezon City',
-                    add_area: 'Brgy. Gumamela',
-                    add_zip: '1068',
-                    add_landmark: 'Near EastWest',
-                    timestamp: '150495687901'
-                },
-                {
-                    id: '2',
-                    title: 'Anne',
-                    fname: 'Hattaway',
-                    phone: '0995475142',
-                    desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis.',
-                    birth_month: '12',
-                    birth_day: '20',
-                    birth_yr: '1978',
-                    add_street: 'Melon Street',
-                    add_unit: 'The Heights Subd',
-                    add_city: 'Quezon City',
-                    add_area: 'Brgy. 6',
-                    add_zip: '1223',
-                    add_landmark: 'Near EastWest',
-                    timestamp: '150495687978'
-                },
-                {
-                    id: '3',
-                    title: 'Rafael',
-                    fname: 'Domingo',
-                    phone: '0995475143',
-                    desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis.',
-                    birth_month: '12',
-                    birth_day: '20',
-                    birth_yr: '1978',
-                    add_street: 'Melon Street',
-                    add_unit: 'The Heights Subd',
-                    add_city: 'Quezon City',
-                    add_area: 'Brgy. 6',
-                    add_zip: '1223',
-                    add_landmark: 'Near EastWest',
-                    timestamp: '150495687975'
-                }
-            ],*/
-            products : JSON.parse(localStorage.getItem("products")),
            
+            products: JSON.parse(localStorage.getItem("products")),
+
         };
     },
     // App root methods
@@ -251,7 +199,6 @@ var app = new Framework7({
     // App routes
     routes: routes,
 });
-
 
 
 // Init/Create main view
@@ -274,6 +221,8 @@ var ordersView = app.views.create('#view-catalogd', {
     url: '/catalogd/'
 });*/
 // Login Screen Demo.
+
+
 $$('#my-login-screen .login-button')
     .on('click', function () {
         var username = $$('#my-login-screen [name="username"]')
@@ -306,89 +255,97 @@ $$('a.category')
 /****************************************** */
 $$(document)
     .on('page:init', '.page[data-name="catalog"]', function (e) {
-       
-            $$('.category').on('click', function(category){
+        app.loadProducts();
+        $$('.category')
+            .on('click', function (category) {
+               
                 category = $$(this).attr("data-cat");
                 console.log('caT', category);
                 itemsArr = JSON.parse(localStorage.getItem("products"));
-                if(itemsArr ==='' || itemsArr === undefined || itemsArr.length <=0){
+                if (itemsArr === '' || itemsArr === undefined || itemsArr.length <= 0) {
                     app.preloader.show();
-                }else{
+                } else {
                     app.preloader.hide();
-               
-                var filter = [category];
-                console.log('Filter', filter);
 
-                var data = {};
+                    var filter = [category];
+                    console.log('Filter', filter);
 
-                _.each(filter, function (item) {
-                    data[item] = true;
-                });
-            
-                var returnData = _.filter(itemsArr, function (item) {
-                    return data[item.cat];
-                });
-            
-                localStorage.setItem("filter_prod",JSON.stringify(returnData));
-               // var fproducts = localStorage.getItem("filter_prod");
-               var fproducts =returnData;
-                console.log(JSON.stringify(fproducts));
+                    var data = {};
 
-            }
+                    _.each(filter, function (item) {
+                        data[item] = true;
+                    });
+
+                    var returnData = _.filter(itemsArr, function (item) {
+                        return data[item.cat];
+                    });
+
+                    localStorage.setItem("filter_prod", JSON.stringify(returnData));
+                    // var fproducts = localStorage.getItem("filter_prod");
+                    var fproducts = returnData;
+                    console.log(JSON.stringify(fproducts));
+
+                }
 
                 app.preloader.show();
+                
                 setTimeout(function () {
-                   app.preloader.hide();
-                $$("#productCatalog").html("");
-                var filteredProd = '';
-                for (i = 0; i < fproducts.length; i++) {
-                    var cli = fproducts[i];
-                   // filteredProd += '<li>'+fproducts[i].title+'</li>';
-                  
-                   filteredProd += '<li class="swipeout">'+
-                    '<div class="swipeout-content" data-id="'+cli.id+'">'+
-                      '<a href="/product/'+cli.id+'/" class="item-link item-content">'+
-                        '<div class="item-media"><img src="'+cli.img+'" width="80"></div>'+
-                        '<div class="item-inner">'+
-                          '<div class="item-title-row">'+
-                           '<div class="item-title">'+cli.title+'</div>'+
-                            '<div class="item-after"><del>₱'+cli.oldprice+'</del>&nbsp; <span>₱'+cli.price+'</span></div>'+
-                          '</div>'+
-                          '<div class="item-text">'+cli.desc+'</div>'+
-                        '</div>'+
-                      '</a>'+
-                      '<div id="stepper_prod_'+cli.id+'" data-id="'+cli.id+'" class="myStepper_'+cli.id+' swipeout-actions-right">'+
-                      '<div class="stepper stepper-small stepper-init">'+
-                          '<div class="stepper-button-minus prod_'+cli.id+'" onclick="app.updateItem('+cli.id+' ,'+cli.stock+')"  ></div>'+
-                          '<div class="stepper-input-wrap">'+
-                            '<input type="number" id="prod_'+cli.id+'" readonly name="quant['+cli.id+']" class="form-control input-number quantity manage-qtty" value="0" min="0" max="100">'+
-                          '</div>'+
-                          '<div class="stepper-button-plus prod_'+cli.id+'" data-id="plus_'+cli.id+'}" onclick="app.addToMyCart('+cli.id+')"></div>'+
-                        '</div>'+
-                      '</div>'+         
-                  '</li>';
-                 
-                 
-                   
-                }
-                $$("#productCatalog").html(filteredProd);
-            }, 800);
+                    app.preloader.hide();
+                   // $$("#productCatalog").html("");
+                    var filteredProd = '';
+                    for (i = 0; i < fproducts.length; i++) {
+                        var cli = fproducts[i];
+                        // filteredProd += '<li>'+fproducts[i].title+'</li>';
+
+                        filteredProd += '<li class="swipeout">' +
+                            '<div class="swipeout-content" data-id="' + cli.id + '">' +
+                            '<a href="/product/' + cli.id + '/" class="item-link item-content">' +
+                            '<div class="item-media"><img src="' + cli.p_img + '" width="80"></div>' +
+                            '<div class="item-inner">' +
+                            '<div class="item-title-row">' +
+                            '<div class="item-title">' + cli.p_name + '</div>' +
+                            '<div class="item-after"><del>₱' + cli.p_oldprice + '</del>&nbsp; <span>₱' + cli.p_price + '</span></div>' +
+                            '</div>' +
+                            '<div class="item-text">' + cli.p_desc + '</div>' +
+                            '</div>' +
+                            '</a>' +
+                            '<div id="stepper_prod_' + cli.id + '" data-id="' + cli.id + '" class="myStepper_' + cli.id + ' swipeout-actions-right">' +
+                            '<div class="stepper stepper-small stepper-init">' +
+                            '<div class="stepper-button-minus prod_' + cli.id + '" onclick="app.updateItem(' + cli.id + ' ,' + cli.p_stock + ')"  ></div>' +
+                            '<div class="stepper-input-wrap">' +
+                            '<input type="number" id="prod_' + cli.id + '" readonly name="quant[' + cli.id + ']" class="form-control input-number quantity manage-qtty" value="0" min="0" max="100">' +
+                            '</div>' +
+                            '<div class="stepper-button-plus prod_' + cli.id + '" data-id="plus_' + cli.id + '}" onclick="app.addToMyCart(' + cli.id + ')"></div>' +
+                            '</div>' +
+                            '</div>' +
+                            '</li>';
+
+
+
+                    }
+                    $$("#productCatalog")
+                        .html(filteredProd);
+                }, 1000);
             });
-       
-        
+
+
+            
+ 
+
+
         //  app.createProducts();
         //  app.loadStore(); // Show preloader before Ajax request
         //  app.preloader.show();
         // Perform Ajax request
-        /* app.request.get('someurl.html', function (data) {
+        /* app.request.get('http://localhost/super8/slim/public/api/supereights', function (data) {
            // Hide preloader when Ajax request completed
            app.preloader.hide();
          });*/
         // app.preloader.show();
-      //  setTimeout(function () {
-            //  app.preloader.hide();
-            //     app.loadStore();
-     //   }, 800);
+        //  setTimeout(function () {
+        //  app.preloader.hide();
+        //     app.loadStore();
+        //   }, 800);
         console.log("Catalog");
         app.addToMyCart = function (id) {
             // alert("test");
@@ -409,7 +366,8 @@ $$(document)
                         'id': id
                     }),
                     cant = 1;
-                $$('body').css('opacity', '0.5');
+                $$('body')
+                    .css('opacity', '0.5');
                 if (cant <= producto.stock) {
                     if (undefined != producto) {
                         if (cant > 0) {
@@ -508,8 +466,21 @@ $$(document)
 $$(document)
     .on('DOMContentLoaded', function () {
         app.purchaseOrders();
+        app.loadStore(); // Show preloader before Ajax request
+       
+        app.preloader.show();
+        setTimeout(function () {
+        app.preloader.hide();
+        app.loadStore();
+
+        app.loadProducts();
+
+        
+   }, 800);
     });
 
+
+    
 //alert("catalogc");
 app.purchaseOrders = function () {
 
@@ -522,7 +493,7 @@ app.purchaseOrders = function () {
         txtClients = [];
     }
 
-   
+
     /*$$("#frmCadastro").on("submit", function () {
         if (operation == "A") {
             return Adicionar(txtClients);
@@ -559,7 +530,7 @@ app.purchaseOrders = function () {
                 .val(cli.cid);
             $$("#txtDate")
                 .val(cli.date);
-           
+
             $$("#txtItems")
                 .val(cli.items);
             $$("#txtNotes")
@@ -568,7 +539,7 @@ app.purchaseOrders = function () {
                 .attr("readonly", "readonly");
             $$("#txtName")
                 .focus();
-            
+
         });
 
     $$("#tblList")
@@ -590,8 +561,8 @@ app.purchaseOrders = function () {
         $$("#servingpo")
             .html(timepo);
         app.dialog.alert(timepo + ' ' + activeCustomer);
-     //   $$("#thisCart").html().clone().appendTo("#itemRecap");
-    
+        //   $$("#thisCart").html().clone().appendTo("#itemRecap");
+
 
     }
 
@@ -608,7 +579,8 @@ app.purchaseOrders = function () {
                 .val(),
             items: $$("#txtItems")
                 .val(),
-            notes: $$("#txtNotes").val()
+            notes: $$("#txtNotes")
+                .val()
         });
         CustomerCartInfo();
         txtClients.push(client);
@@ -619,8 +591,9 @@ app.purchaseOrders = function () {
         app.dialog.alert("Item Added Successfully.");
         $$('#frmCadastro')
             .hide();
-        $$('.popup-backdrop').removeClass('backdrop-in');
-            
+        $$('.popup-backdrop')
+            .removeClass('backdrop-in');
+
         app.router.navigate('/catalogc/');
         //    view1.router.refreshPage(); 
         // view1.router.loadPage({ url: '/pages/catalogc.html', reload: true });
@@ -683,23 +656,29 @@ app.purchaseOrders = function () {
 $$(document)
     .on('page:init', '.page[data-name="homes"]', function (e) {
         app.loadStore();
+        
 
     });
 $$(document)
     .on('page:init', '.page[data-name="catalog"]', function (e) {
         //  app.createProducts();
-        app.loadStore(); // Show preloader before Ajax request
+        //app.loadStore(); // Show preloader before Ajax request
         //  app.preloader.show();
         // Perform Ajax request
         /* app.request.get('someurl.html', function (data) {
            // Hide preloader when Ajax request completed
            app.preloader.hide();
          });*/
-        app.preloader.show();
+         $$(function(){
+            app.loadStore();
+
+
+         })
+       /* app.preloader.show();
         setTimeout(function () {
             app.preloader.hide();
             app.loadStore();
-        }, 800);
+        }, 1000);*/
         console.log("Catalog");
         app.addToMyCart = function (id) {
             // alert("test");
@@ -825,11 +804,39 @@ $$(document)
 
 $$(document)
     .on('page:init', '.page[data-page="category"]', function (e) {
+        app.loadProducts();
         app.loadStore();
+        
         console.log('Category');
+        
     });
 /**************************************** CART */
-app.loadStore = function () {}
+app.loadProducts =function(){
+    app.preloader.show();
+    // Perform Ajax request
+    app.request.get('http://localhost/slim/public/api/products', function (data) {
+    // Hide preloader when Ajax request completed
+    app.preloader.hide();
+    console.log(data);
+    localStorage.setItem("products", data);
+    });
+}
+app.loadCategory = function(){
+    app.purchaseOrders();
+    app.loadStore(); // Show preloader before Ajax request
+    app.preloader.show();
+    // Perform Ajax request
+    app.request.get('http://localhost/slim/public/api/categories', function (data) {
+    // Hide preloader when Ajax request completed
+    app.preloader.hide();
+    console.log(data);
+    localStorage.setItem("category",data);
+    });
+}
+
+
+app.loadStore = function () {
+   
 var business_paypal = '', // aquí va tu correo electrónico de paypal
     currency_icon = '₱';
 mockIdSalesMngr = '1111111111111';
@@ -864,12 +871,15 @@ app.init = function () {
     $$('.totalAmount')
         .text(currency_icon + ' ' + total + ' USD');
 }
+
+
+}
 app.createProducts = function () {
     console.log("create products");
     var products = JSON.parse(localStorage.getItem("products")),
         // wrapper = $$('.productosWrapper'),
         //      wrapper2 = $$('#stepper_prod_'+ products[i].id),
-        wrapper2 = $$('.mystepper1');
+       // wrapper2 = $$('.mystepper1');
     wrapper = $$('#stepper_prod_1');
     content = '';
     oldpricing = '';
@@ -895,7 +905,7 @@ app.createProducts = function () {
     // wrapper.html(content);
     //  wrapper.html('<div>help</div>');
     // wrapper2.html('<div>help</div>');
-    localStorage.setItem('products', JSON.stringify(products))
+   // localStorage.setItem('products', JSON.stringify(products))
 }
 
 function callFunction(func) {
@@ -904,111 +914,7 @@ function callFunction(func) {
 }
 
 
-/*
-app.addtoCart = function (id) {
-    //function checkHasUer(){
-    if (!localStorage.getItem("idMember")) {
-        alert("Please select a customer.");
-        app.router.navigate('/catalogb/');
-        return false;
-    } else {
-        console.log("continue shopping");
-        //
-        //console.log("add to cart");
-        // var l = Ladda.create(document.querySelector('.prod-' + id));
-        var l = $$('.prod-' + id);
-        // l.start();
-        var products = JSON.parse(localStorage.getItem('products')),
-            producto = _.find(products, {
-                'id': id
-            }),
-            cant = 1;
-        $$('body').css('opacity', '0.5');
-        if (cant <= producto.stock) {
-            if (undefined != producto) {
-                if (cant > 0) {
-                    setTimeout(function () {
-                        var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {
-                            items: []
-                        };
-                        app.searchProd(cart,
-                            producto.id,
-                            producto.sku,
-                            parseInt(cant),
-                            producto.name,
-                            producto.price,
-                            producto.img,
-                            producto.stock,
-                            producto.oldprice,
-                            producto.notes,
-                            // producto.cname = localStorage.getItem("idMember"),
-                            producto.cname,
-                            producto.check = "notsync",
-                            producto.select,
-                            producto.email,
-                            // producto.smname = localStorage.getItem("idSalesMngr"),
-                            producto.smname,
-                            producto.timestamp,
-                            producto.ponumber,
-                            producto.total = localStorage.getItem("grndTotal")
-                        )
-                        // l.stop();
-                        console.log(parseInt(cant))
-                        $$('body').css('opacity', '1');
-                    }, 100)
-                } else {
-                    alert('Only larger quantities are allowed to zero');
-                }
-            } else {
-                alert('Oops! Something we wrong, try again later')
-            }
-        } else {
-            alert('You can not add more of this product');
-        }
-    }
-}*/
-/*app.searchProd = function (cart, id, sku, cant, name, price, img, available, oldprice, cname, smname, check, select, notes, email, timestamp, total, ponumber) {
-    //si le pasamos un valor negativo a la cantidad, se descuenta del carrito
-    var curProd = _.find(cart.items, {
-        'id': id
-    })
-    console.log("search products");
-    if (undefined != curProd && curProd != null) {
-        //ya existe el producto, aÃ±adimos uno mÃ¡s a su cantidad
-        if (curProd.cant < available) {
-            curProd.cant = parseInt(curProd.cant + cant)
-        } else {
-            alert('This product is currently out of stock')
-        }
-        $$('#prod_' + curProd.id).val(curProd.cant);
-    } else {
-        //sino existe lo agregamos al carrito
-        var prod = {
-            id: id,
-            sku: sku,
-            cant: cant,
-            name: name,
-            price: price,
-            img: img,
-            available: available,
-            oldprice: oldprice,
-            cname: cname,
-            smname: smname,
-            check: check,
-            select: select,
-            notes: notes,
-            email: email,
-            timestamp: timestamp,
-            total: localStorage.getItem("grndTotal"),
-            ponumber: ponumber,
-        }
-        cart.items.push(prod)
-    }
-    localStorage.setItem('cart', JSON.stringify(cart));
-    app.init();
-    app.getProducts();
-    app.updatePayForm();
-}*/
+
 app.getProducts = function () {
     console.log("get products");
     $$('.submitBtn')
@@ -1024,8 +930,10 @@ app.getProducts = function () {
     wrapper2.html('');
     if (undefined == cart || null == cart || cart == '' || cart.items.length == 0) {
         wrapper.html('<div>Your cart is empty</div>');
-        $$('.submitBtn').hide();
-        $$('.cart').css('left', '-400%')
+        $$('.submitBtn')
+            .hide();
+        $$('.cart')
+            .css('left', '-400%')
     } else {
         var items = '';
         $$('.submitBtn')
@@ -1150,25 +1058,29 @@ app.updatePayForm = function () {
 
 $$(".btn-checkout")
     .on('click', function () {
-        
+
         app.dialog.alert('Please confirm details on the next screens.');
         console.log()
         var myCname = localStorage.getItem("fnMember");
         var myPoNumber = localStorage.getItem("timeandponumber");
-        var myItems = $$("#thisCart").html();
-        
-     
-        $$("#itemRecap").html(myItems);
-        $$("#itemRecap tbody").addClass("cart");
+        var myItems = $$("#thisCart")
+            .html();
+
+
+        $$("#itemRecap")
+            .html(myItems);
+        $$("#itemRecap tbody")
+            .addClass("cart");
+
         function Unix_timestamp(t) {
             var dt = new Date(t * 1000);
             var d = new Date();
             var hr = dt.getHours();
             var m = "0" + dt.getMinutes();
             var s = "0" + dt.getSeconds();
-          //  return dt + '-' + hr + ':' + m.substr(-2) + ':' + s.substr(-2);
-          return d + '-' + hr + ':' + m.substr(-2);
-          
+            //  return dt + '-' + hr + ':' + m.substr(-2) + ':' + s.substr(-2);
+            return d + '-' + hr + ':' + m.substr(-2);
+
         }
         var theTime = Unix_timestamp(myPoNumber);
         $$("#txtItems")
@@ -1249,29 +1161,29 @@ app.resetCart = function () {
 
 
 app.resetPOCart = function () {
-  
-        localStorage.removeItem("cart");
-        localStorage.removeItem("idMember");
-        localStorage.removeItem("grndTotal");
-        localStorage.removeItem("listHTML");
-        localStorage.removeItem("timeandponumber");
-        localStorage.removeItem("fnMember");
-        
-        $$(".cart, .mycart, #totalItems")
-            .html("");
 
-        //  localStorage.removeItem("purchaseorder");
-       
-        console.log("Cache is now cleared.");
-        
-        app.router.navigate('/catalogc/');
-      /*
-        ordersView.router.navigate(ordersView.router.currentRoute.url, {
-            ignoreCache: true,
-            reloadCurrent: true
-        });*/
-       // ordersView.router.refreshPage();
-        return true;
+    localStorage.removeItem("cart");
+    localStorage.removeItem("idMember");
+    localStorage.removeItem("grndTotal");
+    localStorage.removeItem("listHTML");
+    localStorage.removeItem("timeandponumber");
+    localStorage.removeItem("fnMember");
+
+    $$(".cart, .mycart, #totalItems")
+        .html("");
+
+    //  localStorage.removeItem("purchaseorder");
+
+    console.log("Cache is now cleared.");
+
+    app.router.navigate('/catalogc/');
+    /*
+      ordersView.router.navigate(ordersView.router.currentRoute.url, {
+          ignoreCache: true,
+          reloadCurrent: true
+      });*/
+    // ordersView.router.refreshPage();
+    return true;
 
 }
 /************************************* */
@@ -1361,16 +1273,17 @@ btns.on("click", function () {
 }*/
 /***************************** */
 //  $$(document).ready(function () {
-$$(document).on('DOMContentLoaded', function () {
+$$(document)
+    .on('DOMContentLoaded', function () {
 
         app.init();
         app.updatePayForm();
         app.createProducts();
         app.getProducts();
-     
+
         currency_icon = '₱';
         localStorage.setItem("myCurrency", currency_icon);
-       
+
     });
 
 /**************************************** CART */
