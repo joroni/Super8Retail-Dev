@@ -7,7 +7,7 @@ var orderItems = localStorage.getItem("txtClients");
 var customers = localStorage.getItem("customers");
 var app = new Framework7({
     root: '#app', // App root element
-    id: 'io.super8.super8app', // App bundle ID
+    id: 'io.framework7.testapp', // App bundle ID
     name: 'Super8', // App name
     theme: 'auto', // Automatic theme detection
     pushState: true,
@@ -19,7 +19,6 @@ var app = new Framework7({
             },
             // productbs: JSON.parse(customers),
             // productbs: [{"id":1,"cid":1540562584936,"title":"John","fname":"Doe","phone":"12345646","description":"john.doe@email.com"},{"id":2,"cid":1540818411406,"title":"Melissa","fname":"De Leon","phone":"093482940","description":"2014-04-30"},{"id":3,"cid":1540825840882,"title":"Joanne","fname":"Amparo","phone":"123456789","description":"2014-04-08"},{"id":4,"cid":1540918462991,"title":"JKJk","fname":"weieoidfp","phone":"12459","description":"2014-04-30"}],
-            //activepos: JSON.stringify(localStorage.getItem("POselected")),
             productcs: JSON.parse(orderItems),
             //productbs:["{\"Code\":\"1\",\"Name\":\"User\",\"Cid\":\"12345\",\"Date\":\"10-28-18\",\"Items\":\"Test\"}"],
             //productbs: ["{\"id\":\"1\",\"cid\":\"3495894823022\",\"title\":\"Test User1\",\"Date\":\"10-20.18\",\"Items\":\"<table>   <tbody><tr>     <th>Name</th>   </tr>     </tbody><tbody id=\\\"countries\\\"><tr><td>France</td><td><button onclick=\\\"app.Edit(0)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(0)\\\">Delete</button></td></tr><tr><td>Germany</td><td><button onclick=\\\"app.Edit(1)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(1)\\\">Delete</button></td></tr><tr><td>England</td><td><button onclick=\\\"app.Edit(2)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(2)\\\">Delete</button></td></tr><tr><td>Spain</td><td><button onclick=\\\"app.Edit(3)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(3)\\\">Delete</button></td></tr><tr><td>Belgium</td><td><button onclick=\\\"app.Edit(4)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(4)\\\">Delete</button></td></tr><tr><td>Italy</td><td><button onclick=\\\"app.Edit(5)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(5)\\\">Delete</button></td></tr><tr><td>Portugal</td><td><button onclick=\\\"app.Edit(6)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(6)\\\">Delete</button></td></tr><tr><td>Irland</td><td><button onclick=\\\"app.Edit(7)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(7)\\\">Delete</button></td></tr><tr><td>Luxembourg</td><td><button onclick=\\\"app.Edit(8)\\\">Edit</button></td><td><button onclick=\\\"app.Delete(8)\\\">Delete</button></td></tr></tbody> </table>\"}"],
@@ -76,145 +75,169 @@ var app = new Framework7({
                     timestamp: '150495687975'
                 }
             ],*/
-            products: [{
-                    id: '1',
-                    sku: 'A0000001',
-                    title: 'Denim Shirt',
-                    cat: 'Sports Wear',
-                    state: 'New',
-                    statecolor: 'red',
-                    size: '',
-                    img: 'img/products/12.jpg',
-                    oldprice: '',
-                    price: 299.00,
-                    desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-                    stock: 4,
-                    cname: '',
-                    check: '',
-                    select: '',
-                    notes: '',
-                    email: '',
-                    smname: '',
-                    timestamp: '',
-                    ponumber: '',
-                    total: ''
-                },
-                {
-                    id: '2',
-                    sku: 'A0000002',
-                    title: 'Drypers Mega Pack',
-                    cat: 'Baby',
-                    state: 'Sale',
-                    statecolor: 'green',
-                    size: 'Large x 62 pcs',
-                    img: 'img/products/baby.jpg',
-                    oldprice: 630.00,
-                    price: 503.00,
-                    desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-                    stock: 2,
-                    cname: '',
-                    check: '',
-                    select: '',
-                    notes: '',
-                    email: '',
-                    smname: '',
-                    timestamp: '',
-                    ponumber: '',
-                    total: ''
-                },
-                {
-                    id: '3',
-                    sku: 'A0000003',
-                    title: 'Cool Shirt',
-                    cat: 'Out Wear',
-                    state: '',
-                    statecolor: '',
-                    size: '',
-                    img: 'img/products/14.jpg',
-                    oldprice: '',
-                    price: 99.00,
-                    desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-                    stock: 1,
-                    cname: '',
-                    check: '',
-                    select: '',
-                    notes: '',
-                    email: '',
-                    smname: '',
-                    timestamp: '',
-                    ponumber: '',
-                    total: ''
-                },
-                {
-                    id: '4',
-                    sku: 'A0000004',
-                    title: '137 Degrees Iced Coffee Latte with Almond Milk Drink',
-                    cat: 'Coffee',
-                    state: '',
-                    statecolor: '',
-                    size: '3 pcs x 180 ml',
-                    img: 'img/products/coffee.jpg',
-                    oldprice: '',
-                    price: 80.00,
-                    desc: 'Perfect iced coffee latte with almond milk',
-                    stock: 50,
-                    cname: '',
-                    check: '',
-                    select: '',
-                    notes: '',
-                    email: '',
-                    smname: '',
-                    timestamp: '',
-                    ponumber: '',
-                    total: ''
-                },
-                {
-                    id: '5',
-                    sku: 'A0000005',
-                    title: 'Gingen Strong Ginger Formula Tea',
-                    cat: 'Tea',
-                    state: 'Best Seller',
-                    size: '',
-                    statecolor: 'blue',
-                    img: 'img/products/tea.jpg',
-                    oldprice: '',
-                    price: 440.00,
-                    desc: 'Hot drink with slightly sweet and strong taste from aged quality ginger',
-                    stock: 20,
-                    cname: '',
-                    check: '',
-                    select: '',
-                    notes: '',
-                    email: '',
-                    smname: '',
-                    timestamp: '',
-                    ponumber: '',
-                    total: ''
-                },
-                {
-                    id: '6',
-                    sku: 'A0000006',
-                    title: 'Cool Shirt',
-                    cat: 'Out Wear',
-                    state: '',
-                    statecolor: '',
-                    size: '3 pcs x 180 ml',
-                    img: 'img/products/15.jpg',
-                    oldprice: '',
-                    price: 80.00,
-                    desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-                    stock: 8,
-                    cname: '',
-                    check: '',
-                    select: '',
-                    notes: '',
-                    email: '',
-                    smname: '',
-                    timestamp: '',
-                    ponumber: '',
-                    total: ''
-                }
-            ]
+            products : [{
+                id: '1',
+                sku: 'A0000001',
+                title: 'Denim Shirt',
+                cat: 'Sports Wear',
+                state: 'New',
+                statecolor: 'red',
+                size: '',
+                img: 'img/products/12.jpg',
+                oldprice: '',
+                price: 299.00,
+                desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+                stock: 4,
+                cname: '',
+                check: '',
+                select: '',
+                notes: '',
+                email: '',
+                smname: '',
+                timestamp: '',
+                ponumber: '',
+                total: ''
+            },
+            {
+                id: '2',
+                sku: 'A0000002',
+                title: 'Drypers Mega Pack',
+                cat: 'Baby',
+                state: 'Sale',
+                statecolor: 'green',
+                size: 'Large x 62 pcs',
+                img: 'img/products/baby.jpg',
+                oldprice: 630.00,
+                price: 503.00,
+                desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+                stock: 2,
+                cname: '',
+                check: '',
+                select: '',
+                notes: '',
+                email: '',
+                smname: '',
+                timestamp: '',
+                ponumber: '',
+                total: ''
+            },
+            {
+                id: '3',
+                sku: 'A0000003',
+                title: 'Cool Shirt',
+                cat: 'Out Wear',
+                state: '',
+                statecolor: '',
+                size: '',
+                img: 'img/products/14.jpg',
+                oldprice: '',
+                price: 99.00,
+                desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+                stock: 1,
+                cname: '',
+                check: '',
+                select: '',
+                notes: '',
+                email: '',
+                smname: '',
+                timestamp: '',
+                ponumber: '',
+                total: ''
+            },
+            {
+                id: '4',
+                sku: 'A0000004',
+                title: '137 Degrees Iced Coffee Latte with Almond Milk Drink',
+                cat: 'Coffee',
+                state: '',
+                statecolor: '',
+                size: '3 pcs x 180 ml',
+                img: 'img/products/coffee.jpg',
+                oldprice: '',
+                price: 80.00,
+                desc: 'Perfect iced coffee latte with almond milk',
+                stock: 50,
+                cname: '',
+                check: '',
+                select: '',
+                notes: '',
+                email: '',
+                smname: '',
+                timestamp: '',
+                ponumber: '',
+                total: ''
+            },
+            {
+                id: '5',
+                sku: 'A0000005',
+                title: 'Gingen Strong Ginger Formula Tea',
+                cat: 'Tea',
+                state: 'Best Seller',
+                size: '',
+                statecolor: 'blue',
+                img: 'img/products/tea.jpg',
+                oldprice: '',
+                price: 440.00,
+                desc: 'Hot drink with slightly sweet and strong taste from aged quality ginger',
+                stock: 20,
+                cname: '',
+                check: '',
+                select: '',
+                notes: '',
+                email: '',
+                smname: '',
+                timestamp: '',
+                ponumber: '',
+                total: ''
+            },
+            {
+                id: '6',
+                sku: 'A0000006',
+                title: 'Cool Shirt',
+                cat: 'Out Wear',
+                state: '',
+                statecolor: '',
+                size: '3 pcs x 180 ml',
+                img: 'img/products/15.jpg',
+                oldprice: '',
+                price: 80.00,
+                desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+                stock: 8,
+                cname: '',
+                check: '',
+                select: '',
+                notes: '',
+                email: '',
+                smname: '',
+                timestamp: '',
+                ponumber: '',
+                total: ''
+            },
+            {
+                id: '7',
+                sku: 'A0000007',
+                title: 'Nice Shirt',
+                cat: 'Out Wear',
+                state: '',
+                statecolor: '',
+                size: '3 pcs x 180 ml',
+                img: 'img/products/15.jpg',
+                oldprice: '',
+                price: 70.00,
+                desc: '5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+                stock: 8,
+                cname: '',
+                check: '',
+                select: '',
+                notes: '',
+                email: '',
+                smname: '',
+                timestamp: '',
+                ponumber: '',
+                total: ''
+            }]
+            
+           
         };
     },
     // App root methods
@@ -248,7 +271,7 @@ var customersView = app.views.create('#view-catalog', {
 var ordersView = app.views.create('#view-catalogd', {
     url: '/catalogd/'
 });*/
-// Login Screen Demo
+// Login Screen Demo.
 $$('#my-login-screen .login-button')
     .on('click', function () {
         var username = $$('#my-login-screen [name="username"]')
@@ -281,19 +304,82 @@ $$('a.category')
 /****************************************** */
 $$(document)
     .on('page:init', '.page[data-name="catalog"]', function (e) {
+       
+            $$('.category').on('click', function(category){
+                category = $$(this).attr("data-cat");
+                console.log('caT', category);
+                itemsArr = JSON.parse(localStorage.getItem("products"));
+                var filter = [category];
+                console.log('Filter', filter);
+                var data = {};
+                _.each(filter, function (item) {
+                    data[item] = true;
+                });
+            
+                var returnData = _.filter(itemsArr, function (item) {
+                    return data[item.cat];
+                });
+            
+                localStorage.setItem("filter_prod",JSON.stringify(returnData));
+               // var fproducts = localStorage.getItem("filter_prod");
+               var fproducts =returnData;
+                console.log(JSON.stringify(returnData));
+
+
+
+
+                $$("#productCatalog").html("");
+                var filteredProd = '';
+                for (i = 0; i < fproducts.length; i++) {
+                    var cli = fproducts[i];
+                   // filteredProd += '<li>'+fproducts[i].title+'</li>';
+                   app.preloader.show();
+                   setTimeout(function () {
+                      app.preloader.hide();
+                   filteredProd += '<li class="swipeout">'+
+                    '<div class="swipeout-content" data-id="'+cli.id+'">'+
+                      '<a href="/product/'+cli.id+'/" class="item-link item-content">'+
+                        '<div class="item-media"><img src="'+cli.img+'" width="80"></div>'+
+                        '<div class="item-inner">'+
+                          '<div class="item-title-row">'+
+                           '<div class="item-title">'+cli.name+'</div>'+
+                            '<div class="item-after"><del>₱'+cli.oldprice+'</del>&nbsp; <span>₱'+cli.price+'</span></div>'+
+                          '</div>'+
+                          '<div class="item-text">'+cli.desc+'</div>'+
+                        '</div>'+
+                      '</a>'+
+                      '<div id="stepper_prod_'+cli.id+'" data-id="'+cli.id+'" class="myStepper_'+cli.id+' swipeout-actions-right">'+
+                      '<div class="stepper stepper-small stepper-init">'+
+                          '<div class="stepper-button-minus prod_'+cli.id+'" onclick="app.updateItem('+cli.id+' ,'+cli.stock+')"  ></div>'+
+                          '<div class="stepper-input-wrap">'+
+                            '<input type="number" id="prod_'+cli.id+'" readonly name="quant['+cli.id+']" class="form-control input-number quantity manage-qtty" value="0" min="0" max="100">'+
+                          '</div>'+
+                          '<div class="stepper-button-plus prod_'+cli.id+'" data-id="plus_'+cli.id+'}" onclick="app.addToMyCart('+cli.id+')"></div>'+
+                        '</div>'+
+                      '</div>'+         
+                  '</li>';
+                 
+                    $$("#productCatalog").html(filteredProd);
+                }, 800);
+                   
+                }
+          
+            });
+       
+        
         //  app.createProducts();
-      //  app.loadStore(); // Show preloader before Ajax request
+        //  app.loadStore(); // Show preloader before Ajax request
         //  app.preloader.show();
         // Perform Ajax request
         /* app.request.get('someurl.html', function (data) {
            // Hide preloader when Ajax request completed
            app.preloader.hide();
          });*/
-       // app.preloader.show();
-        setTimeout(function () {
-          //  app.preloader.hide();
-       //     app.loadStore();
-        }, 800);
+        // app.preloader.show();
+      //  setTimeout(function () {
+            //  app.preloader.hide();
+            //     app.loadStore();
+     //   }, 800);
         console.log("Catalog");
         app.addToMyCart = function (id) {
             // alert("test");
@@ -314,8 +400,7 @@ $$(document)
                         'id': id
                     }),
                     cant = 1;
-                $$('body')
-                    .css('opacity', '0.5');
+                $$('body').css('opacity', '0.5');
                 if (cant <= producto.stock) {
                     if (undefined != producto) {
                         if (cant > 0) {
@@ -410,49 +495,12 @@ $$(document)
 $$(document)
     .on('page:init', '.page[data-name="catalogc"]', function (e) {
         app.purchaseOrders();
-        $$('.item-link').on('click', function () {
-            var codeID = $$(this).attr("data-code");
-            app.thisItem(codeID);
-
-        })
     });
 $$(document)
     .on('DOMContentLoaded', function () {
         app.purchaseOrders();
-        
-
     });
 
-
-app.thisItem = function (codeID) {
-    // var purchase_orders = [{"code":"1541745596212","name":"Jane Doe","date":"Fri Nov 09 2018 14:40:03 GMT+0800 (Philippine Standard Time)-1:36","items":"<tr><td><span class=\"qant\">1</span></td><td><h3 class=\"title\" data-id=\"A0000001\">Denim Shirt</h3></td><td colspan=\"2\"><p class=\"right\"><del></del></p><p class=\"price right\">₱299.00</p></td></tr><tr class=\"total-row\"><td colspan=\"2\"> </td><td id=\"total\" class=\"total right\" colspan=\"3\">₱299.00 </td></tr>","notes":"Processing"},{"code":"1541745657473","name":"Jane Doe","date":"Fri Nov 09 2018 14:41:02 GMT+0800 (Philippine Standard Time)-18:37","items":"<tr><td><span class=\"qant\">1</span></td><td><h3 class=\"title\" data-id=\"A0000002\">Drypers Mega Pack</h3></td><td colspan=\"2\"><p class=\"right\"><del>₱630.00</del></p><p class=\"price right\">₱503.00</p></td></tr><tr><td><span class=\"qant\">1</span></td><td><h3 class=\"title\" data-id=\"A0000003\">Cool Shirt</h3></td><td colspan=\"2\"><p class=\"right\"><del></del></p><p class=\"price right\">₱99.00</p></td></tr><tr class=\"total-row\"><td colspan=\"2\"> </td><td id=\"total\" class=\"total right\" colspan=\"3\">₱602.00 </td></tr>","notes":"Processing"}];
-    var purchase_orders = JSON.parse(localStorage.getItem("txtClients"));
-
-    var evens = _.filter(purchase_orders, function (obj) {
-        return ~obj.code.toLowerCase().indexOf(codeID);
-    });
-    localStorage.setItem("POselected", JSON.stringify(evens));
-    // alert(JSON.stringify(evens));   
-    var newdata = evens;
-   
-    $.each(newdata, function (i, v) {
-        var shortdate = v.date.substr(0, v.date.lastIndexOf(" GMT") + 1);
-        $('#thisPOdata').html('<div class="block"><ul>' +
-            '<li><label>PO #:</label>' + v.code + '</li>' +
-            '<li><label>Customer:</label>' + v.name + '</li>' +
-            '<li><label>Date:</label>' + shortdate + '</li></ul>' +
-            '<div><table class="table">' + v.items + '</table></div></div>'
-        );
-    })
-
-    $$(".table tbody").addClass("cart");
-}
-
-
-$$(document).on('page:init', '.page[data-name="activepo"]', function (e) {
-
-    alert('activepo');
-});
 //alert("catalogc");
 app.purchaseOrders = function () {
 
@@ -465,7 +513,7 @@ app.purchaseOrders = function () {
         txtClients = [];
     }
 
-
+   
     /*$$("#frmCadastro").on("submit", function () {
         if (operation == "A") {
             return Adicionar(txtClients);
@@ -475,15 +523,16 @@ app.purchaseOrders = function () {
     });
     */
 
-    $$("#frmCadastro").on("click", ".btn-submit-po", function () {
-        if (operation == "A") {
-            return Adicionar(txtClients);
+    $$("#frmCadastro")
+        .on("click", ".btn-submit-po", function () {
+            if (operation == "A") {
+                return Adicionar(txtClients);
 
-        } else {
+            } else {
 
-            return EditItem(txtClients, index_selected);
-        }
-    });
+                return EditItem(txtClients, index_selected);
+            }
+        });
 
     List(txtClients);
     console.log('list orders');
@@ -501,7 +550,7 @@ app.purchaseOrders = function () {
                 .val(cli.cid);
             $$("#txtDate")
                 .val(cli.date);
-
+           
             $$("#txtItems")
                 .val(cli.items);
             $$("#txtNotes")
@@ -510,7 +559,7 @@ app.purchaseOrders = function () {
                 .attr("readonly", "readonly");
             $$("#txtName")
                 .focus();
-
+            
         });
 
     $$("#tblList")
@@ -531,16 +580,15 @@ app.purchaseOrders = function () {
         var timepo = localStorage.getItem("timeandponumber");
         $$("#servingpo")
             .html(timepo);
-        // app.dialog.alert(timepo + ' ' + activeCustomer);
-
+        app.dialog.alert(timepo + ' ' + activeCustomer);
+     //   $$("#thisCart").html().clone().appendTo("#itemRecap");
+    
 
     }
 
-
-
     function Adicionar(txtClients) {
         // CustomerCartInfo();
-        var client = {
+        var client = JSON.stringify({
             code: $$("#txtCode")
                 .val(),
             name: $$("#txtName")
@@ -552,8 +600,8 @@ app.purchaseOrders = function () {
             items: $$("#txtItems")
                 .val(),
             notes: $$("#txtNotes").val()
-        };
-        //  CustomerCartInfo();
+        });
+        CustomerCartInfo();
         txtClients.push(client);
         console.log("txtClients - " + txtClients);
         localStorage.setItem("txtClients", JSON.stringify(txtClients));
@@ -563,7 +611,7 @@ app.purchaseOrders = function () {
         $$('#frmCadastro')
             .hide();
         $$('.popup-backdrop').removeClass('backdrop-in');
-
+            
         app.router.navigate('/catalogc/');
         //    view1.router.refreshPage(); 
         // view1.router.loadPage({ url: '/pages/catalogc.html', reload: true });
@@ -604,27 +652,18 @@ app.purchaseOrders = function () {
         $$("#tblList")
             .html("");
         for (var i in txtClients) {
-            // var cli = JSON.parse(txtClients[i]);
-            var cli = txtClients[i];
-            // the original string
-            var olddate = cli.date;
-            // remove everything after the last backslash
-            var shortdate = olddate.substr(0, olddate.lastIndexOf(" GMT") + 1);
+            var cli = JSON.parse(txtClients[i]);
             $$("#tblList")
-                .append('<li id="'+i+'">' +
-                    '<a href="#" class="item-link item-content popup-open"  data-popup="#activepo" data-code="' + cli.code + '" alt="">' +
+                .append('<li>' +
+                    '<a href="#" class="item-link item-content" alt="">' +
                     // '<div class="item-media"><i class="icon icon-f7"></i></div>' +
                     '<div class="item-inner">' +
-                    '<div class="item-title">' + cli.name + '<p><small>' + shortdate + '</small></p></div>' +
+                    '<div class="item-title">' + cli.code + '<p><small>' + cli.date + '</small></p></div>' +
                     '<div class="item-after"><span class="badge">' + cli.notes + '</span></div>' +
                     '</div>' +
                     '</a>' +
                     '</li>'
-                );
-
-
-
-
+                )
         }
     }
 }
@@ -634,10 +673,10 @@ app.purchaseOrders = function () {
 
 $$(document)
     .on('page:init', '.page[data-name="homes"]', function (e) {
-       // app.loadStore();
+        app.loadStore();
 
     });
-/*$$(document)
+$$(document)
     .on('page:init', '.page[data-name="catalog"]', function (e) {
         //  app.createProducts();
         app.loadStore(); // Show preloader before Ajax request
@@ -646,7 +685,7 @@ $$(document)
         /* app.request.get('someurl.html', function (data) {
            // Hide preloader when Ajax request completed
            app.preloader.hide();
-         });*\/
+         });*/
         app.preloader.show();
         setTimeout(function () {
             app.preloader.hide();
@@ -774,14 +813,14 @@ $$(document)
             app.updatePayForm();
         }
     });
-*/
+
 $$(document)
     .on('page:init', '.page[data-page="category"]', function (e) {
-      //  app.loadStore();
+        app.loadStore();
         console.log('Category');
     });
 /**************************************** CART */
-//app.loadStore = function () {}
+app.loadStore = function () {}
 var business_paypal = '', // aquí va tu correo electrónico de paypal
     currency_icon = '₱';
 mockIdSalesMngr = '1111111111111';
@@ -818,145 +857,7 @@ app.init = function () {
 }
 app.createProducts = function () {
     console.log("create products");
-    var products = [{
-                id: 1,
-                sku: 'A0000001',
-                name: 'Denim Shirt',
-                cat: 'Sports Wear',
-                state: 'New',
-                statecolor: 'red',
-                size: '',
-                img: 'img/products/12.jpg',
-                oldprice: '',
-                price: 299.00,
-                desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-                stock: 4,
-                cname: '',
-                check: '',
-                select: '',
-                notes: '',
-                email: '',
-                smname: '',
-                timestamp: '',
-                ponumber: '',
-                total: ''
-            },
-            {
-                id: 2,
-                sku: 'A0000002',
-                name: 'Drypers Mega Pack',
-                cat: 'Baby',
-                state: 'Sale',
-                statecolor: 'green',
-                size: 'Large x 62 pcs',
-                img: 'img/products/baby.jpg',
-                oldprice: 630.00,
-                price: 503.00,
-                desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-                stock: 2,
-                cname: '',
-                check: '',
-                select: '',
-                notes: '',
-                email: '',
-                smname: '',
-                timestamp: '',
-                ponumber: '',
-                total: ''
-            },
-            {
-                id: 3,
-                sku: 'A0000003',
-                name: 'Cool Shirt',
-                cat: 'Out Wear',
-                state: '',
-                statecolor: '',
-                size: '',
-                img: 'img/products/14.jpg',
-                oldprice: '',
-                price: 99.00,
-                desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-                stock: 1,
-                cname: '',
-                check: '',
-                select: '',
-                notes: '',
-                email: '',
-                smname: '',
-                timestamp: '',
-                ponumber: '',
-                total: ''
-            },
-            {
-                id: 4,
-                sku: 'A0000004',
-                name: '137 Degrees Iced Coffee Latte with Almond Milk Drink',
-                cat: 'Coffee',
-                state: '',
-                statecolor: '',
-                size: '3 pcs x 180 ml',
-                img: 'img/products/coffee.jpg',
-                oldprice: '',
-                price: 80.00,
-                desc: 'Perfect iced coffee latte with almond milk',
-                stock: 50,
-                cname: '',
-                check: '',
-                select: '',
-                notes: '',
-                email: '',
-                smname: '',
-                timestamp: '',
-                ponumber: '',
-                total: ''
-            },
-            {
-                id: 5,
-                sku: 'A0000005',
-                name: 'Gingen Strong Ginger Formula Tea',
-                cat: 'Tea',
-                state: 'Best Seller',
-                size: '',
-                statecolor: 'blue',
-                img: 'img/products/tea.jpg',
-                oldprice: '',
-                price: 440.00,
-                desc: 'Hot drink with slightly sweet and strong taste from aged quality ginger',
-                stock: 20,
-                cname: '',
-                check: '',
-                select: '',
-                notes: '',
-                email: '',
-                smname: '',
-                timestamp: '',
-                ponumber: '',
-                total: ''
-            },
-            {
-                id: 6,
-                sku: 'A0000006',
-                name: 'Cool Shirt',
-                cat: 'Out Wear',
-                state: '',
-                statecolor: '',
-                size: '3 pcs x 180 ml',
-                img: 'img/products/15.jpg',
-                oldprice: '',
-                price: 80.00,
-                desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
-                stock: 8,
-                cname: '',
-                check: '',
-                select: '',
-                notes: '',
-                email: '',
-                smname: '',
-                timestamp: '',
-                ponumber: '',
-                total: ''
-            }
-        ],
+    var products = JSON.parse(localStorage.getItem("products")),
         // wrapper = $$('.productosWrapper'),
         //      wrapper2 = $$('#stepper_prod_'+ products[i].id),
         wrapper2 = $$('.mystepper1');
@@ -1140,7 +1041,7 @@ app.getProducts = function () {
             items += '<tr>'
             //items += '<td><img src="'+n.img+'" /></td>'
             items += '<td><span class="qant">' + n.cant + '</span></td>'
-            items += '<td><h3 class="title" data-sku="' + n.sku + '">' + n.name + '</h3></td>'
+            items += '<td><h3 class="title" data-id="' + n.sku + '">' + n.name + '</h3></td>'
             items += '<td colspan="2"><p class="right"><del>' + oldpricing + '</del></p>'
             items += '<p class="price right">' + currency_icon + '' + n.price.toFixed(2) + '</p></td>'
             items += '</tr>';
@@ -1208,17 +1109,14 @@ app.deleteProd = function (id, remove) {
 app.updatePayForm = function () {
     //eso va a generar un formulario dinamico para paypal
     //con los products y sus precios
-   
     var cart = (JSON.parse(localStorage.getItem('cart')) != null) ? JSON.parse(localStorage.getItem('cart')) : {
         items: []
     };
     localStorage.setItem("purchaseorder", JSON.stringify(cart));
     var grandtotal = localStorage.getItem("grndTotal");
-    var activeCustomer = localStorage.getItem("fnMember");
-      
-    var timepo = localStorage.getItem("timeandponumber");
+
     //var statics = '<form action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_cart"><input type="hidden" name="upload" value="1"><input type="hidden" name="currency_code" value="USD" /><input type="hidden" name="business" value="' + business_paypal + '">',
-    var statics = '<form  method="post"><input type="hidden" name="customer" value="'+activeCustomer+'"><input type="hidden" name="upload" value="1"><input type="hidden" name="currency_code" value="PHP" /><input type="hidden" name="pocode" value="'+timepo+'"><input type="hidden" name="grandtotal" class="grandtotal" value="' + grandtotal + '">',
+    var statics = '<form  method="post"><input type="hidden" name="cmd" value="_cart"><input type="hidden" name="upload" value="1"><input type="hidden" name="currency_code" value="PHP" /><input type="hidden" name="business" value="SUPER 8"><input type="hidden" name="grandtotal" class="grandtotal" value="' + grandtotal + '">',
         dinamic = '',
         wrapper = $$('.submitForm')
     wrapper.html('')
@@ -1227,7 +1125,7 @@ app.updatePayForm = function () {
         _.forEach(cart.items, function (prod, key) {
             dinamic += '<input type="hidden" name="item_name_' + i + '" value="' + prod.name + '">'
             dinamic += '<input type="hidden" name="amount_' + i + '" value="' + prod.price + '">'
-            dinamic += '<input type="hidden" name="item_sku_' + i + '" value="' + prod.sku + '">'
+            dinamic += '<input type="hidden" name="iuem_sku_' + i + '" value="' + prod.sku + '">'
             dinamic += '<input type="hidden" name="item_number_' + i + '" value="' + prod.id + '" />'
             dinamic += '<input type="hidden" name="quantity_' + i + '" value="' + prod.cant + '" />'
             dinamic += '<input type="hidden" class="grndTotal" name="total_' + i + '" value="' + grandtotal + '" />' // added by jrn
@@ -1243,27 +1141,25 @@ app.updatePayForm = function () {
 
 $$(".btn-checkout")
     .on('click', function () {
-
+        
         app.dialog.alert('Please confirm details on the next screens.');
         console.log()
         var myCname = localStorage.getItem("fnMember");
         var myPoNumber = localStorage.getItem("timeandponumber");
         var myItems = $$("#thisCart").html();
-
-
+        
+     
         $$("#itemRecap").html(myItems);
         $$("#itemRecap tbody").addClass("cart");
-        
-
         function Unix_timestamp(t) {
             var dt = new Date(t * 1000);
             var d = new Date();
             var hr = dt.getHours();
             var m = "0" + dt.getMinutes();
             var s = "0" + dt.getSeconds();
-            //  return dt + '-' + hr + ':' + m.substr(-2) + ':' + s.substr(-2);
-            return d + '-' + hr + ':' + m.substr(-2);
-
+          //  return dt + '-' + hr + ':' + m.substr(-2) + ':' + s.substr(-2);
+          return d + '-' + hr + ':' + m.substr(-2);
+          
         }
         var theTime = Unix_timestamp(myPoNumber);
         $$("#txtItems")
@@ -1344,30 +1240,29 @@ app.resetCart = function () {
 
 
 app.resetPOCart = function () {
+  
+        localStorage.removeItem("cart");
+        localStorage.removeItem("idMember");
+        localStorage.removeItem("grndTotal");
+        localStorage.removeItem("listHTML");
+        localStorage.removeItem("timeandponumber");
+        localStorage.removeItem("fnMember");
+        
+        $$(".cart, .mycart, #totalItems")
+            .html("");
 
-    localStorage.removeItem("cart");
-    localStorage.removeItem("idMember");
-    localStorage.removeItem("grndTotal");
-    localStorage.removeItem("listHTML");
-    localStorage.removeItem("timeandponumber");
-    localStorage.removeItem("fnMember");
-
-    $$(".cart, .mycart,.cartmemberinfo, #totalItems")
-        .html("");
-
-    //  localStorage.removeItem("purchaseorder");
-
-    console.log("Cache is now cleared.");
-
-     app.router.navigate('/catalogc/');
-    /*
-      ordersView.router.navigate(ordersView.router.currentRoute.url, {
-          ignoreCache: true,
-          reloadCurrent: true
-      });*/
-    // ordersView.router.refreshPage();
-    location.reload();
-   // return true;
+        //  localStorage.removeItem("purchaseorder");
+       
+        console.log("Cache is now cleared.");
+        
+        app.router.navigate('/catalogc/');
+      /*
+        ordersView.router.navigate(ordersView.router.currentRoute.url, {
+            ignoreCache: true,
+            reloadCurrent: true
+        });*/
+       // ordersView.router.refreshPage();
+        return true;
 
 }
 /************************************* */
@@ -1459,14 +1354,14 @@ btns.on("click", function () {
 //  $$(document).ready(function () {
 $$(document).on('DOMContentLoaded', function () {
 
-    app.init();
-    app.updatePayForm();
-  //  app.createProducts();
-    app.getProducts();
-
-    currency_icon = '₱';
-    localStorage.setItem("myCurrency", currency_icon);
-
-});
+        app.init();
+        app.updatePayForm();
+        app.createProducts();
+        app.getProducts();
+     
+        currency_icon = '₱';
+        localStorage.setItem("myCurrency", currency_icon);
+       
+    });
 
 /**************************************** CART */
