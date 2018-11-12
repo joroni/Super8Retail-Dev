@@ -247,7 +247,7 @@ var customersView = app.views.create('#view-catalog', {
 var ordersView = app.views.create('#view-catalogd', {
     url: '/catalogd/'
 });*/
-// Login Screen Demo
+// Login Screen Demo.
 $$('#my-login-screen .login-button')
     .on('click', function () {
         var username = $$('#my-login-screen [name="username"]')
@@ -280,19 +280,82 @@ $$('a.category')
 /****************************************** */
 $$(document)
     .on('page:init', '.page[data-name="catalog"]', function (e) {
+       
+            $$('.category').on('click', function(category){
+                category = $$(this).attr("data-cat");
+                console.log('caT', category);
+                itemsArr = JSON.parse(localStorage.getItem("products"));
+                var filter = [category];
+                console.log('Filter', filter);
+                var data = {};
+                _.each(filter, function (item) {
+                    data[item] = true;
+                });
+            
+                var returnData = _.filter(itemsArr, function (item) {
+                    return data[item.cat];
+                });
+            
+                localStorage.setItem("filter_prod",JSON.stringify(returnData));
+               // var fproducts = localStorage.getItem("filter_prod");
+               var fproducts =returnData;
+                console.log(JSON.stringify(returnData));
+
+
+
+
+                $$("#productCatalog").html("");
+                var filteredProd = '';
+                for (i = 0; i < fproducts.length; i++) {
+                    var cli = fproducts[i];
+                   // filteredProd += '<li>'+fproducts[i].title+'</li>';
+                   app.preloader.show();
+                   setTimeout(function () {
+                      app.preloader.hide();
+                   filteredProd += '<li class="swipeout">'+
+                    '<div class="swipeout-content" data-id="'+cli.id+'">'+
+                      '<a href="/product/'+cli.id+'/" class="item-link item-content">'+
+                        '<div class="item-media"><img src="'+cli.img+'" width="80"></div>'+
+                        '<div class="item-inner">'+
+                          '<div class="item-title-row">'+
+                           ' <div class="item-title">'+cli.title+'</div>'+
+                            '<div class="item-after"><del>₱'+cli.oldprice+'</del>&nbsp; <span>₱'+cli.price+'</span></div>'+
+                          '</div>'+
+                          '<div class="item-text">'+cli.desc+'</div>'+
+                        '</div>'+
+                      '</a>'+
+                      '<div id="stepper_prod_'+cli.id+'" data-id="'+cli.id+'" class="myStepper_'+cli.id+' swipeout-actions-right">'+
+                      '<div class="stepper stepper-small stepper-init">'+
+                          '<div class="stepper-button-minus prod_'+cli.id+'" onclick="app.updateItem('+cli.id+' ,'+cli.stock+')"  ></div>'+
+                          '<div class="stepper-input-wrap">'+
+                            '<input type="number" id="prod_'+cli.id+'" readonly name="quant['+cli.id+']" class="form-control input-number quantity manage-qtty" value="0" min="0" max="100">'+
+                          '</div>'+
+                          '<div class="stepper-button-plus prod_'+cli.id+'" data-id="plus_'+cli.id+'}" onclick="app.addToMyCart('+cli.id+')"></div>'+
+                        '</div>'+
+                      '</div>'+         
+                  '</li>';
+                 
+                    $$("#productCatalog").html(filteredProd);
+                }, 800);
+                   
+                }
+          
+            });
+       
+        
         //  app.createProducts();
-        app.loadStore(); // Show preloader before Ajax request
+        //  app.loadStore(); // Show preloader before Ajax request
         //  app.preloader.show();
         // Perform Ajax request
         /* app.request.get('someurl.html', function (data) {
            // Hide preloader when Ajax request completed
            app.preloader.hide();
          });*/
-        app.preloader.show();
-        setTimeout(function () {
-            app.preloader.hide();
-            app.loadStore();
-        }, 800);
+        // app.preloader.show();
+      //  setTimeout(function () {
+            //  app.preloader.hide();
+            //     app.loadStore();
+     //   }, 800);
         console.log("Catalog");
         app.addToMyCart = function (id) {
             // alert("test");
@@ -313,8 +376,7 @@ $$(document)
                         'id': id
                     }),
                     cant = 1;
-                $$('body')
-                    .css('opacity', '0.5');
+                $$('body').css('opacity', '0.5');
                 if (cant <= producto.stock) {
                     if (undefined != producto) {
                         if (cant > 0) {
