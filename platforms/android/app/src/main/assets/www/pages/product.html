@@ -8,7 +8,7 @@
               <span class="ios-only">Back</span>
             </a>
           </div>
-          <div class="title">{{product.p_title}}</div>
+          <div class="title">{{product.title}}</div>
         </div>
       </div>
       <div class="page-content">
@@ -48,7 +48,7 @@
                    <div data-id="{{product.p_id}}" class="mystepper{{product.p_id}}">
                    </div>
                  
-                   <div id="stepper_center_prod_{{product.id}}" data-id="{{product.id}}" class="centered">
+                   <div id="stepper_center_prod_{{product.p_id}}" data-id="{{product.p_id}}" class="centered">
                       <div class="stepper stepper-small stepper-init">
                           <div class="stepper-button-minus prod_{{product.p_id}}" onclick="app.updateItem({{product.p_id}} ,{{product.p_stock}})"  ></div>
                           <div class="stepper-input-wrap">
@@ -95,9 +95,12 @@
   <script>
     return {
       data: function () {
-        var productId = this.$route.params.p_id;
+     //   var products = JSON.parse(sessionStorage.getItem("products"));
+        var productId = this.$route.params.id;
+        console.log(productId);
         var currentProduct;
-        this.$root.products.forEach(function (product) {
+        this.$root.ffproducts.forEach(function (product)  {
+       
           if (product.p_id === productId) {
             currentProduct = product;
           }

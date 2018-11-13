@@ -6,6 +6,7 @@ var $$ = Dom7;
 //var orderItems = JSON.parse(localStorage.getItem("txtClients"));
 var orderItems = localStorage.getItem("txtClients");
 var customers = localStorage.getItem("customers");
+var ffproducts= [{"p_id":"A0000002","p_title":"Nescafe","parent_id":"2","p_state":"","p_statecolor":"","p_size":"","p_img":"img/products/12.jpg","p_oldprice":"","p_price":"300.00","p_desc":"Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.","p_stock":5}];
 var dynamicproducts = [
     {
 	"cat_id": "1",
@@ -18,11 +19,11 @@ var dynamicproducts = [
                     "p_state": "Sale",
                     "p_statecolor": "green",
                     "p_size": "12 dozen",
-                    "p_img": "img/products/10.jpg",
+                    "p_img": "img/products/baby.jpg",
                     "p_oldprice":"650.00",
                     "p_price":"500.00",
                     "p_desc":"Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.",
-                    "stock":100
+                    "p_stock":100
 				}]
 	},
 	{
@@ -40,7 +41,7 @@ var dynamicproducts = [
                     "p_oldprice":"",
                     "p_price":"299.00",
                     "p_desc":"Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.",
-                    "stock":4
+                    "p_stock":4
 
 			    },
 			    {
@@ -54,7 +55,7 @@ var dynamicproducts = [
                     "p_oldprice":"",
                     "p_price":"300.00",
                     "p_desc":"Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.",
-                    "stock":5
+                    "p_stock":5
                 }]
     },
     {
@@ -72,7 +73,7 @@ var dynamicproducts = [
                         "p_oldprice":"",
                         "p_price":"99.00",
                         "p_desc":"Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.",
-                        "stock":4
+                        "p_stock":4
     
                     },
                     {
@@ -86,12 +87,23 @@ var dynamicproducts = [
                         "p_oldprice":"",
                         "p_price":"100.00",
                         "p_desc":"Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.",
-                        "stock":5
+                        "p_stock":5
                     }]
         }
 ];
 localStorage.setItem("products", JSON.stringify(dynamicproducts));
-
+/*var globalProducts = JSON.parse(localStorage.getItem("products"));
+console.log("globalProducts", globalProducts);
+for (i = 0; i < globalProducts.length; i++) {
+    var localProducts = globalProducts[i].children[i];
+    console.log("localProducts", localProducts);
+    localStorage.setItem("localproducts", JSON.stringify(localProducts));
+    //var theproducts = '';
+   // var lol = theproducts.push(localProducts);
+    //txtClients.push(client);
+   // console.log("lol",lol);
+    console.log("localproducts", localStorage.getItem("localproducts"));
+}*/
 
 var app = new Framework7({
     root: '#app', // App root element
@@ -109,7 +121,9 @@ var app = new Framework7({
             // productbs: [{"id":1,"cid":1540562584936,"title":"John","fname":"Doe","phone":"12345646","description":"john.doe@email.com"},{"id":2,"cid":1540818411406,"title":"Melissa","fname":"De Leon","phone":"093482940","description":"2014-04-30"},{"id":3,"cid":1540825840882,"title":"Joanne","fname":"Amparo","phone":"123456789","description":"2014-04-08"},{"id":4,"cid":1540918462991,"title":"JKJk","fname":"weieoidfp","phone":"12459","description":"2014-04-30"}],
             productcs: JSON.parse(orderItems),
            
-            products: JSON.parse(localStorage.getItem("products")),
+         //   products: JSON.parse(localStorage.getItem("localproducts")),
+         products: localStorage.getItem("localproducts"),
+         fproducts: JSON.parse(localStorage.getItem("filter_prod")),
 
         };
     },
@@ -212,10 +226,16 @@ $$(document).on('page:init', '.page[data-name="catalog"]', function (e) {
                      return data[item.cat_name];
                  });
 
-                 localStorage.setItem("filter_prod", JSON.stringify(returnData));
+                // localStorage.setItem("filter_prod", JSON.stringify(returnData));
                  // var fproducts = localStorage.getItem("filter_prod");
                  var fproducts = returnData;
-                 console.log(JSON.stringify(fproducts));
+
+
+                 for (i = 0; i < fproducts.length; i++) {
+                    var localProduct = fproducts[i].children[i];
+                    sessionStorage.setItem("products", JSON.stringify(localProduct));
+                 }
+                 // console.log("fproducts", JSON.stringify(localProduct));
 
              }
 
@@ -225,11 +245,7 @@ $$(document).on('page:init', '.page[data-name="catalog"]', function (e) {
                  app.preloader.hide();
                 // $$("#productCatalog").html("");
                  var filteredProd = '';
-                 /*********************** */
-
-
-
-                 /******************* */
+                 
                  for (i = 0; i < fproducts.length; i++) {
                      var cli = fproducts[i].children[i];
                      // filteredProd += '<li>'+fproducts[i].title+'</li>';
@@ -248,7 +264,7 @@ $$(document).on('page:init', '.page[data-name="catalog"]', function (e) {
                          '</a>' +
                          '<div id="stepper_prod_' + cli.p_id + '" data-id="' + cli.p_id + '" class="myStepper_' + cli.p_id + ' swipeout-actions-right">' +
                          '<div class="stepper stepper-small stepper-init">' +
-                         '<div class="stepper-button-minus prod_' + cli.id + '" onclick="app.updateItem(' + cli.p_id + ' ,' + cli.p_stock + ')"  ></div>' +
+                         '<div class="stepper-button-minus prod_' + cli.p_id + '" onclick="app.updateItem(' + cli.p_id + ' ,' + cli.p_stock + ')"  ></div>' +
                          '<div class="stepper-input-wrap">' +
                          '<input type="number" id="prod_' + cli.p_id + '" readonly name="quant[' + cli.p_id + ']" class="form-control input-number quantity manage-qtty" value="0" min="0" max="100">' +
                          '</div>' +
@@ -260,15 +276,14 @@ $$(document).on('page:init', '.page[data-name="catalog"]', function (e) {
 
 
                  }
-                 $$("#productCatalog")
-                     .html(filteredProd);
+                 $$("#productCatalog").append(filteredProd);
              }, 1000);
          });
 
          
 
         console.log("Catalog");
-        app.addToMyCart = function (id) {
+        app.addToMyCart = function (p_id) {
             // alert("test");
             //function checkHasUer(){
             if (!localStorage.getItem("idMember")) {
@@ -280,11 +295,11 @@ $$(document).on('page:init', '.page[data-name="catalog"]', function (e) {
                 //
                 //console.log("add to cart");
                 // var l = Ladda.create(document.querySelector('.prod-' + id));
-                var l = $$('.prod-' + id);
+                var l = $$('.prod-' + p_id);
                 // l.start();
                 var products = JSON.parse(localStorage.getItem('products')),
                     producto = _.find(products, {
-                        'id': id
+                        'id': p_id
                     }),
                     cant = 1;
                 $$('body')
