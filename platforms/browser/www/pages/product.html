@@ -8,7 +8,7 @@
               <span class="ios-only">Back</span>
             </a>
           </div>
-          <div class="title">{{product.title}}</div>
+          <div class="title">{{product.p_title}}</div>
         </div>
       </div>
       <div class="page-content">
@@ -20,42 +20,42 @@
             <div class="row wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
   
               <!--Grid column-->
-              <div class="col-md-6 mb-4 centered" id="prodImg"><img src="{{product.img}}" class="img-fluid prod-page-image"
-                  alt="{{product.title}}"></div>
+              <div class="col-md-6 mb-4 centered" id="prodImg"><img src="{{product.p_img}}" class="img-fluid prod-page-image"
+                  alt="{{product.p_title}}"></div>
   
               <!--Grid column-->
               <div class="col-md-6 mb-4">
                 <div class="p-1">
   
-                  <h2 class="centered" id="thisName">{{product.title}}</h2>
-                  <p class="lead small centered" id="thisStock">In Stock: {{product.stock}}</p>
+                  <h2 class="centered" id="thisName">{{product.p_title}}</h2>
+                  <p class="lead small centered" id="thisStock">In Stock: {{product.p_stock}}</p>
                 </div>
                 <!--Content-->
                 <div class="p-1">
   
                   <div class="mb-3 centered" id="thisBadges"><a href=""><span class="mybadge badge {{product.statecolor}} mr-1">{{product.state}}</span></a></div>
   
-                  <p class="lead centered" id="thisLead"><span class="mr-1"> <del>{{product.oldprice}}</del></span><span>
-                      {{product.price}}</span></p>
+                  <p class="lead centered" id="thisLead"><span class="mr-1"> <del>{{product.p_oldprice}}</del></span><span>
+                      {{product.p_price}}</span></p>
   
                   <p class="lead font-weight-bold">Description</p>
   
-                  <p id="thisDesc"> {{product.desc}}</p>
+                  <p id="thisDesc"> {{product.p_desc}}</p>
                   <hr>
                   <form class="d-flex justify-content-left" id="thisAddCart">
                     <!-- Default input -->
                    </form>
-                   <div data-id="{{product.id}}" class="mystepper{{product.id}}">
+                   <div data-id="{{product.p_id}}" class="mystepper{{product.p_id}}">
                    </div>
                  
                    <div id="stepper_center_prod_{{product.id}}" data-id="{{product.id}}" class="centered">
                       <div class="stepper stepper-small stepper-init">
-                          <div class="stepper-button-minus prod_{{product.id}}" onclick="app.updateItem({{product.id}} ,{{product.stock}})"  ></div>
+                          <div class="stepper-button-minus prod_{{product.p_id}}" onclick="app.updateItem({{product.p_id}} ,{{product.p_stock}})"  ></div>
                           <div class="stepper-input-wrap">
-                            <input type="number" id="prod_{{product.id}}" readonly name="quant[{{product.id}}]" class="form-control input-number quantity manage-qtty" value="0" min="0" max="100">
+                            <input type="number" id="prod_{{product.p_id}}" readonly name="quant[{{product.id}}]" class="form-control input-number quantity manage-qtty" value="0" min="0" max="100">
                           </div>
                          <!-- <div class="stepper-button-plus prod_{{id}}" onclick="app.addToCart('{{id}}')"></div>-->
-                         <div class="stepper-button-plus prod_{{product.id}}" data-id="plus_{{product.id}}" onclick="app.addToMyCart({{product.id}})"></div>
+                         <div class="stepper-button-plus prod_{{product.p_id}}" data-id="plus_{{product.p_id}}" onclick="app.addToMyCart({{product.p_id}})"></div>
                         </div>
                       </div>
                 </div>
@@ -95,10 +95,10 @@
   <script>
     return {
       data: function () {
-        var productId = this.$route.params.id;
+        var productId = this.$route.params.p_id;
         var currentProduct;
         this.$root.products.forEach(function (product) {
-          if (product.id === productId) {
+          if (product.p_id === productId) {
             currentProduct = product;
           }
         });

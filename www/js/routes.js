@@ -33,7 +33,7 @@ routes = [
     componentUrl: './pages/category.html',
   },
   {
-    path: '/catalog/:cat/',
+    path: '/catalog/:cat_id/',
     componentUrl: './pages/catalog.html',
   },
   {
