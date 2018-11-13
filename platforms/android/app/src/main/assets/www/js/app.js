@@ -247,7 +247,7 @@ var customersView = app.views.create('#view-catalog', {
 var ordersView = app.views.create('#view-catalogd', {
     url: '/catalogd/'
 });*/
-// Login Screen Demo
+// Login Screen Demo.
 $$('#my-login-screen .login-button')
     .on('click', function () {
         var username = $$('#my-login-screen [name="username"]')
