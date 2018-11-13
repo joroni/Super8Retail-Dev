@@ -2,14 +2,15 @@
   <div class="page" data-name="catalog" id="catalog">
     <div class="navbar">
       <div class="navbar-inner sliding">
-        <div class="title">Products</div>
+        <div class="title">Catalog</div>
       </div>
     </div>
     <div class="page-content">
       <div class="list list-block media-list">
-        <ul id="productCatalog">
-         <!-- {{#each products}}
-          <li class="swipeout">
+        <ul>
+          {{#each products}}
+         
+          <li class="swipeout {{cattrim}} hidden" data-cattrim="{{cattrim}}">
             <div class="swipeout-content" data-id="{{id}}">
               <a href="/product/{{id}}/" class="item-link item-content">
                 <div class="item-media"><img src="{{img}}" width="80"></div>
@@ -18,7 +19,7 @@
                     <div class="item-title">{{title}}</div>
                     <div class="item-after"><del>₱{{oldprice}}</del>&nbsp; <span>₱{{price}}</span></div>
                   </div>
-                  <!-<div class="item-subtitle"><a href=""><span class="mybadge badge {{statecolor}} mr-1">{{state}}</span></a></div>->
+                  <!--<truediv class="item-subtitle"><a href=""><span class="mybadge badge {{statecolor}} mr-1">{{state}}</span></a></div>-->
                   <div class="item-text">{{desc}}</div>
                 </div>
               </a>
@@ -28,20 +29,21 @@
                   <div class="stepper-input-wrap">
                     <input type="number" id="prod_{{id}}" readonly name="quant[{{id}}]" class="form-control input-number quantity manage-qtty" value="0" min="0" max="100">
                   </div>
-                 <!- <div class="stepper-button-plus prod_{{id}}" onclick="app.addToCart('{{id}}')"></div>->
+                 <!-- <div class="stepper-button-plus prod_{{id}}" onclick="app.addToCart('{{id}}')"></div>-->
                  <div class="stepper-button-plus prod_{{id}}" data-id="plus_{{id}}" onclick="app.addToMyCart({{id}})"></div>
                 </div>
               </div>
             
                
           </li>
-          {{/each}}-->
+          {{/each}}
         </ul>
       </div>
     </div>
   </div>
 </template>
 <script>
+  
   return {
     data: function () {
       return {
