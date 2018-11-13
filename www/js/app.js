@@ -81,6 +81,7 @@ var app = new Framework7({
                     sku: 'A0000001',
                     title: 'Denim Shirt',
                     cat: 'Sports Wear',
+                    cattrim: 'Sports-Wear',
                     state: 'New',
                     statecolor: 'red',
                     size: '',
@@ -104,6 +105,7 @@ var app = new Framework7({
                     sku: 'A0000002',
                     title: 'Drypers Mega Pack',
                     cat: 'Baby',
+                    cattrim: 'Baby',
                     state: 'Sale',
                     statecolor: 'green',
                     size: 'Large x 62 pcs',
@@ -127,6 +129,7 @@ var app = new Framework7({
                     sku: 'A0000003',
                     title: 'Cool Shirt',
                     cat: 'Out Wear',
+                    cattrim: 'Out-Wear',
                     state: '',
                     statecolor: '',
                     size: '',
@@ -150,6 +153,7 @@ var app = new Framework7({
                     sku: 'A0000004',
                     title: '137 Degrees Iced Coffee Latte with Almond Milk Drink',
                     cat: 'Coffee',
+                    cattrim: 'Coffee',
                     state: '',
                     statecolor: '',
                     size: '3 pcs x 180 ml',
@@ -173,6 +177,7 @@ var app = new Framework7({
                     sku: 'A0000005',
                     title: 'Gingen Strong Ginger Formula Tea',
                     cat: 'Tea',
+                    cattrim: 'Tea',
                     state: 'Best Seller',
                     size: '',
                     statecolor: 'blue',
@@ -196,6 +201,7 @@ var app = new Framework7({
                     sku: 'A0000006',
                     title: 'Cool Shirt',
                     cat: 'Out Wear',
+                    cattrim: 'Out-Wear',
                     state: '',
                     statecolor: '',
                     size: '3 pcs x 180 ml',
@@ -270,17 +276,39 @@ $$('a.getsku')
         sessionStorage.setItem("skuItem", ThisSKU);
         app.dialog.alert(selectedCat);
     });
-$$('a.category')
-    .on('click', function () {
-        var selectedCat = $$(this)
-            .html();
+/*$$('a.category').on('click', function () {
+        var selectedCat = $$(this).html();
         // Alert username and password
         app.dialog.alert(selectedCat);
-    });
+    });*/
 
 /****************************************** */
 $$(document)
     .on('page:init', '.page[data-name="catalog"]', function (e) {
+        app.preloader.show();
+        setTimeout(function () {
+        var selectedCat = localStorage.getItem("category");
+       
+        
+            $$("."+selectedCat).removeClass("hidden");
+            app.preloader.hide();
+         }, 1000);
+      
+       
+       
+    
+       // app.preloader.show();
+       /* if (mylist == selectedCat){
+            setTimeout(function () {
+                 app.preloader.hide();
+                 mylist.addClass("show");
+              }, 800);
+           
+        }*/
+        //var selItem = $(this).filter('[data-cat="'+selectedCat+'"]');
+        //selItem.show();
+      
+        
         //  app.createProducts();
       //  app.loadStore(); // Show preloader before Ajax request
         //  app.preloader.show();
@@ -775,10 +803,15 @@ $$(document)
         }
     });
 */
-$$(document)
-    .on('page:init', '.page[data-page="category"]', function (e) {
-      //  app.loadStore();
-        console.log('Category');
+$$(document).on('page:init', '.page[data-name="category"]', function (e) {
+    console.log('Category');
+      
+        $$('#categories .category').on('click', function () {
+            var selectedCat = $$(this).attr("data-cattrim");
+           // console.log(selectedCat);
+            localStorage.setItem("category", selectedCat);
+        });
+       
     });
 /**************************************** CART */
 //app.loadStore = function () {}
