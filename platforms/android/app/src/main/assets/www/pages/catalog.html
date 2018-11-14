@@ -11,11 +11,11 @@
           {{#each products}}
           <li class="swipeout">
             <div class="swipeout-content" data-id="{{id}}">
-              <a href="/product/{{id}}/" class="item-link item-content">
+              <a href="/product/{{id}}/" class="item-link item-content tab-link">
                 <div class="item-media"><img src="{{img}}" width="80"></div>
                 <div class="item-inner">
                   <div class="item-title-row">
-                    <div class="item-title">{{title}}</div>
+                    <div class="item-title">{{name}}</div>
                     <div class="item-after"><del>₱{{oldprice}}</del>&nbsp; <span>₱{{price}}</span></div>
                   </div>
                   <!--<div class="item-subtitle"><a href=""><span class="mybadge badge {{statecolor}} mr-1">{{state}}</span></a></div>-->
@@ -26,7 +26,7 @@
               <div class="stepper stepper-small stepper-init">
                   <div class="stepper-button-minus prod_{{id}}" onclick="app.updateItem({{id}} ,{{stock}})"  ></div>
                   <div class="stepper-input-wrap">
-                    <input type="number" id="prod_{{id}}" readonly name="quant[{{id}}]" class="form-control input-number quantity manage-qtty" value="0" min="0" max="100">
+                    <input type="number" id="prod_{{id}}" readonly title="quant[{{id}}]" class="form-control input-number quantity manage-qtty" value="0" min="0" max="100">
                   </div>
                  <!-- <div class="stepper-button-plus prod_{{id}}" onclick="app.addToCart('{{id}}')"></div>-->
                  <div class="stepper-button-plus prod_{{id}}" data-id="plus_{{id}}" onclick="app.addToMyCart({{id}})"></div>

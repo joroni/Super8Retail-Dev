@@ -5,7 +5,7 @@ var $$ = Dom7;
 //var orderItems = JSON.parse(localStorage.getItem("txtClients"));
 var orderItems = localStorage.getItem("txtClients");
 var customers = localStorage.getItem("customers");
-var base_url = 'http://localhost';
+var base_url = 'http://localhost/slim';
 var app = new Framework7({
     root: '#app', // App root element
     id: 'io.framework7.testapp', // App bundle ID
@@ -19,9 +19,146 @@ var app = new Framework7({
                 lastName: 'Doe',
             },
             // productbs: JSON.parse(customers),
-            // productbs: [{"id":1,"cid":1540562584936,"title":"John","fname":"Doe","phone":"12345646","description":"john.doe@email.com"},{"id":2,"cid":1540818411406,"title":"Melissa","fname":"De Leon","phone":"093482940","description":"2014-04-30"},{"id":3,"cid":1540825840882,"title":"Joanne","fname":"Amparo","phone":"123456789","description":"2014-04-08"},{"id":4,"cid":1540918462991,"title":"JKJk","fname":"weieoidfp","phone":"12459","description":"2014-04-30"}],
+            // productbs: [{"id":1,"cid":1540562584936,"name":"John","fname":"Doe","phone":"12345646","description":"john.doe@email.com"},{"id":2,"cid":1540818411406,"name":"Melissa","fname":"De Leon","phone":"093482940","description":"2014-04-30"},{"id":3,"cid":1540825840882,"name":"Joanne","fname":"Amparo","phone":"123456789","description":"2014-04-08"},{"id":4,"cid":1540918462991,"name":"JKJk","fname":"weieoidfp","phone":"12459","description":"2014-04-30"}],
             productcs: JSON.parse(orderItems),
-            products: JSON.parse(localStorage.getItem("products"))
+            products: [{
+                id: 1,
+                sku: 'A0000001',
+                name: 'Denim Shirt',
+                cat: 'Sports Wear',
+                state: 'New',
+                statecolor: 'red',
+                size: '',
+                img: 'img/products/12.jpg',
+                oldprice: '',
+                price: 299.00,
+                desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+                stock: 4,
+                cname: '',
+                check: '',
+                select: '',
+                notes: '',
+                email: '',
+                smname: '',
+                timestamp: '',
+                ponumber: '',
+                total: ''
+            },
+            {
+                id: 2,
+                sku: 'A0000002',
+                name: 'Drypers Mega Pack',
+                cat: 'Baby',
+                state: 'Sale',
+                statecolor: 'green',
+                size: 'Large x 62 pcs',
+                img: 'img/products/baby.jpg',
+                oldprice: 630.00,
+                price: 503.00,
+                desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+                stock: 2,
+                cname: '',
+                check: '',
+                select: '',
+                notes: '',
+                email: '',
+                smname: '',
+                timestamp: '',
+                ponumber: '',
+                total: ''
+            },
+            {
+                id: 3,
+                sku: 'A0000003',
+                name: 'Cool Shirt',
+                cat: 'Out Wear',
+                state: '',
+                statecolor: '',
+                size: '',
+                img: 'img/products/14.jpg',
+                oldprice: '',
+                price: 99.00,
+                desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+                stock: 1,
+                cname: '',
+                check: '',
+                select: '',
+                notes: '',
+                email: '',
+                smname: '',
+                timestamp: '',
+                ponumber: '',
+                total: ''
+            },
+            {
+                id: 4,
+                sku: 'A0000004',
+                name: '137 Degrees Iced Coffee Latte with Almond Milk Drink',
+                cat: 'Coffee',
+                state: '',
+                statecolor: '',
+                size: '3 pcs x 180 ml',
+                img: 'img/products/coffee.jpg',
+                oldprice: '',
+                price: 80.00,
+                desc: 'Perfect iced coffee latte with almond milk',
+                stock: 50,
+                cname: '',
+                check: '',
+                select: '',
+                notes: '',
+                email: '',
+                smname: '',
+                timestamp: '',
+                ponumber: '',
+                total: ''
+            },
+            {
+                id: 5,
+                sku: 'A0000005',
+                name: 'Gingen Strong Ginger Formula Tea',
+                cat: 'Tea',
+                state: 'Best Seller',
+                size: '',
+                statecolor: 'blue',
+                img: 'img/products/tea.jpg',
+                oldprice: '',
+                price: 440.00,
+                desc: 'Hot drink with slightly sweet and strong taste from aged quality ginger',
+                stock: 20,
+                cname: '',
+                check: '',
+                select: '',
+                notes: '',
+                email: '',
+                smname: '',
+                timestamp: '',
+                ponumber: '',
+                total: ''
+            },
+            {
+                id: 6,
+                sku: 'A0000006',
+                name: 'Cool Shirt',
+                cat: 'Out Wear',
+                state: '',
+                statecolor: '',
+                size: '3 pcs x 180 ml',
+                img: 'img/products/15.jpg',
+                oldprice: '',
+                price: 80.00,
+                desc: 'Libertad 5oz BU 1998 Contains 1 Libertad 5oz BU brilliant uncirculated .999 fine Silver. In capsule The same coin as you see in this picture. We only Ship to the US, and is FREE Shipping Shipping time 5-7 business days via UPS express with tracking and insurance. Payments only via Paypal.',
+                stock: 8,
+                cname: '',
+                check: '',
+                select: '',
+                notes: '',
+                email: '',
+                smname: '',
+                timestamp: '',
+                ponumber: '',
+                total: ''
+            }],
         };
     },
     // App root methods
@@ -134,7 +271,7 @@ $$(document)
                                     producto.id,
                                     producto.sku,
                                     parseInt(cant),
-                                    producto.title,
+                                    producto.name,
                                     producto.price,
                                     producto.img,
                                     producto.stock,
@@ -229,7 +366,7 @@ $$(document)
     app.fetchProductData = function () {
         app.preloader.show();
         // Perform Ajax request
-        app.request.get('http://localhost/slim/public/api/products', function (data) {
+        app.request.get(base_url+'/public/api/products', function (data) {
             // Hide preloader when Ajax request completed
             app.preloader.hide();
         });
@@ -279,7 +416,7 @@ app.purchaseOrders = function () {
             $$("#txtCode")
                 .val(cli.code);
             $$("#txtName")
-                .val(cli.title);
+                .val(cli.name);
             $$("#txtCid")
                 .val(cli.cid);
             $$("#txtDate")
@@ -410,7 +547,7 @@ $$(document)
         app.loadStore();
 
     });
-$$(document)
+/*$$(document)
     .on('page:init', '.page[data-name="catalog"]', function (e) {
         //  app.createProducts();
         app.loadStore(); // Show preloader before Ajax request
@@ -419,7 +556,7 @@ $$(document)
         /* app.request.get('someurl.html', function (data) {
            // Hide preloader when Ajax request completed
            app.preloader.hide();
-         });*/
+         });*
         app.preloader.show();
         setTimeout(function () {
             app.preloader.hide();
@@ -458,7 +595,7 @@ $$(document)
                                     producto.id,
                                     producto.sku,
                                     parseInt(cant),
-                                    producto.title,
+                                    producto.name,
                                     producto.price,
                                     producto.img,
                                     producto.stock,
@@ -493,7 +630,7 @@ $$(document)
         }
 
 
-        app.searchProd = function (cart, id, sku, cant, title, price, img, available, oldprice, cname, smname, check, select, notes, email, timestamp, total, ponumber) {
+        app.searchProd = function (cart, id, sku, cant, name, price, img, available, oldprice, cname, smname, check, select, notes, email, timestamp, total, ponumber) {
             //si le pasamos un valor negativo a la cantidad, se descuenta del carrito
             var curProd = _.find(cart.items, {
                 'id': id
@@ -523,7 +660,7 @@ $$(document)
                     email: email,
                     id: id,
                     img: img,
-                    title: title,
+                    name: name,
                     notes: notes,
                     oldprice: oldprice,
 
@@ -546,7 +683,7 @@ $$(document)
             app.getProducts();
             app.updatePayForm();
         }
-    });
+    });*/
 
 $$(document).on('page:init', '.page[data-name="category"]', function (e) {
     app.loadStore();
@@ -574,7 +711,7 @@ $$(document).on('page:init', '.page[data-name="category"]', function (e) {
                     '<div class="item-media"><img src="' + products[i].img + '" width="80"></div>' +
                     '<div class="item-inner">' +
                     '<div class="item-title-row">' +
-                    '<div class="item-title">' + products[i].title + '</div>' +
+                    '<div class="item-title">' + products[i].name + '</div>' +
                     '<div class="item-after">' + '<del>' + oldpricing + '</del>&nbsp; <span>' + currency_icon + ' ' + products[i].price + '</span></div>' +
                     '</div>' +
 
@@ -642,7 +779,7 @@ app.createProducts = function () {
     var products = [{
                 id: 1,
                 sku: 'A0000001',
-                title: 'Denim Shirt',
+                name: 'Denim Shirt',
                 cat: 'Sports Wear',
                 state: 'New',
                 statecolor: 'red',
@@ -665,7 +802,7 @@ app.createProducts = function () {
             {
                 id: 2,
                 sku: 'A0000002',
-                title: 'Drypers Mega Pack',
+                name: 'Drypers Mega Pack',
                 cat: 'Baby',
                 state: 'Sale',
                 statecolor: 'green',
@@ -688,7 +825,7 @@ app.createProducts = function () {
             {
                 id: 3,
                 sku: 'A0000003',
-                title: 'Cool Shirt',
+                name: 'Cool Shirt',
                 cat: 'Out Wear',
                 state: '',
                 statecolor: '',
@@ -711,7 +848,7 @@ app.createProducts = function () {
             {
                 id: 4,
                 sku: 'A0000004',
-                title: '137 Degrees Iced Coffee Latte with Almond Milk Drink',
+                name: '137 Degrees Iced Coffee Latte with Almond Milk Drink',
                 cat: 'Coffee',
                 state: '',
                 statecolor: '',
@@ -734,7 +871,7 @@ app.createProducts = function () {
             {
                 id: 5,
                 sku: 'A0000005',
-                title: 'Gingen Strong Ginger Formula Tea',
+                name: 'Gingen Strong Ginger Formula Tea',
                 cat: 'Tea',
                 state: 'Best Seller',
                 size: '',
@@ -757,7 +894,7 @@ app.createProducts = function () {
             {
                 id: 6,
                 sku: 'A0000006',
-                title: 'Cool Shirt',
+                name: 'Cool Shirt',
                 cat: 'Out Wear',
                 state: '',
                 statecolor: '',
@@ -961,7 +1098,7 @@ app.getProducts = function () {
             items += '<tr>'
             //items += '<td><img src="'+n.img+'" /></td>'
             items += '<td><span class="qant">' + n.cant + '</span></td>'
-            items += '<td><h3 class="title" data-id="' + n.sku + '">' + n.title + '</h3></td>'
+            items += '<td><h3 class="title" data-id="' + n.sku + '">' + n.name + '</h3></td>'
             items += '<td colspan="2"><p class="right"><del>' + oldpricing + '</del></p>'
             items += '<p class="price right">' + currency_icon + '' + n.price.toFixed(2) + '</p></td>'
             items += '</tr>';
@@ -1043,7 +1180,7 @@ app.updatePayForm = function () {
     if (undefined != cart && null != cart && cart != '') {
         var i = 1;
         _.forEach(cart.items, function (prod, key) {
-            dinamic += '<input type="hidden" name="item_name_' + i + '" value="' + prod.title + '">'
+            dinamic += '<input type="hidden" name="item_name_' + i + '" value="' + prod.name + '">'
             dinamic += '<input type="hidden" name="amount_' + i + '" value="' + prod.price + '">'
             dinamic += '<input type="hidden" name="item_sku_' + i + '" value="' + prod.sku + '">'
             dinamic += '<input type="hidden" name="item_number_' + i + '" value="' + prod.id + '" />'
@@ -1239,7 +1376,7 @@ btns.on("click", function () {
         var desc = product.desc;
         var id = product.id;
         var img = product.img;
-        var name = product.title;
+        var name = product.name;
         var price = product.price;
         var size = product.size;
         var sku = product.sku;

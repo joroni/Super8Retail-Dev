@@ -8,7 +8,7 @@
               <span class="ios-only">Back</span>
             </a>
           </div>
-          <div class="title">{{product.title}}</div>
+          <div class="title">{{product.name}}</div>
         </div>
       </div>
       <div class="page-content">
@@ -21,13 +21,13 @@
   
               <!--Grid column-->
               <div class="col-md-6 mb-4 centered" id="prodImg"><img src="{{product.img}}" class="img-fluid prod-page-image"
-                  alt="{{product.title}}"></div>
+                  alt="{{product.name}}"></div>
   
               <!--Grid column-->
               <div class="col-md-6 mb-4">
                 <div class="p-1">
   
-                  <h2 class="centered" id="thisName">{{product.title}}</h2>
+                  <h2 class="centered" id="thisName">{{product.name}}</h2>
                   <p class="lead small centered" id="thisStock">In Stock: {{product.stock}}</p>
                 </div>
                 <!--Content-->
@@ -40,7 +40,7 @@
   
                   <p class="lead font-weight-bold">Description</p>
   
-                  <p id="thisDesc"> {{product.desc}}</p>
+                  <p id="thisDesc">{{product.desc}}</p>
                   <hr>
                   <form class="d-flex justify-content-left" id="thisAddCart">
                     <!-- Default input -->
@@ -52,7 +52,7 @@
                       <div class="stepper stepper-small stepper-init">
                           <div class="stepper-button-minus prod_{{product.id}}" onclick="app.updateItem({{product.id}} ,{{product.stock}})"  ></div>
                           <div class="stepper-input-wrap">
-                            <input type="number" id="prod_{{product.id}}" readonly name="quant[{{product.id}}]" class="form-control input-number quantity manage-qtty" value="0" min="0" max="100">
+                            <input type="number" id="prod_{{product.id}}" readonly title="quant[{{product.id}}]" class="form-control input-number quantity manage-qtty" value="0" min="0" max="100">
                           </div>
                          <!-- <div class="stepper-button-plus prod_{{id}}" onclick="app.addToCart('{{id}}')"></div>-->
                          <div class="stepper-button-plus prod_{{product.id}}" data-id="plus_{{product.id}}" onclick="app.addToMyCart({{product.id}})"></div>
