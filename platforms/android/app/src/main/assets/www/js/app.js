@@ -134,7 +134,7 @@ $$(document)
                                     producto.id,
                                     producto.sku,
                                     parseInt(cant),
-                                    producto.name,
+                                    producto.title,
                                     producto.price,
                                     producto.img,
                                     producto.stock,
@@ -279,7 +279,7 @@ app.purchaseOrders = function () {
             $$("#txtCode")
                 .val(cli.code);
             $$("#txtName")
-                .val(cli.name);
+                .val(cli.title);
             $$("#txtCid")
                 .val(cli.cid);
             $$("#txtDate")
@@ -846,7 +846,7 @@ app.addtoCart = function (id) {
                             producto.id,
                             producto.sku,
                             parseInt(cant),
-                            producto.name,
+                            producto.title,
                             producto.price,
                             producto.img,
                             producto.stock,
@@ -1239,7 +1239,7 @@ btns.on("click", function () {
         var desc = product.desc;
         var id = product.id;
         var img = product.img;
-        var name = product.name;
+        var name = product.title;
         var price = product.price;
         var size = product.size;
         var sku = product.sku;
