@@ -25,7 +25,8 @@
   return {
     data: function () {
       return {
-        products: this.$root.products,
+       
+        products:  _.uniq(this.$root.products, 'cat'),
       };
     }
   };
