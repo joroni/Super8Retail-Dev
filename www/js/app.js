@@ -425,7 +425,7 @@ $$(document)
                 //
                 //console.log("add to cart");
                 // var l = Ladda.create(document.querySelector('.prod-' + id));
-                var l = $$('.prod-' + id);
+                var l = $$('.prod_' + id);
                 // l.start();
                 var products = JSON.parse(localStorage.getItem('products')),
                     producto = _.find(products, {
@@ -445,7 +445,7 @@ $$(document)
                                     producto.id,
                                     producto.sku,
                                     parseInt(cant),
-                                    producto.name,
+                                    producto.title,
                                     producto.price,
                                     producto.img,
                                     producto.stock,
@@ -480,7 +480,7 @@ $$(document)
         }
 
 
-        app.searchProd = function (cart, id, sku, cant, name, price, img, available, oldprice, cname, smname, check, select, notes, email, timestamp, total, ponumber) {
+        app.searchProd = function (cart, id, sku, cant, title, price, img, available, oldprice, cname, smname, check, select, notes, email, timestamp, total, ponumber) {
             //si le pasamos un valor negativo a la cantidad, se descuenta del carrito
             var curProd = _.find(cart.items, {
                 'id': id
@@ -510,7 +510,7 @@ $$(document)
                     email: email,
                     id: id,
                     img: img,
-                    name: name,
+                    title: title,
                     notes: notes,
                     oldprice: oldprice,
 
@@ -535,10 +535,58 @@ $$(document)
         }
     });
 
-$$(document)
-    .on('page:init', '.page[data-page="category"]', function (e) {
+$$(document).on('page:init', '.page[data-name="category"]', function (e) {
         app.loadStore();
         console.log('Category');
+        $$("a.category").on('click', function(){
+        var selectcat = $$(this).attr("alt");
+            console.log(selectcat);
+            var rawproducts = JSON.parse(localStorage.getItem("products"));
+           var products= _.filter(rawproducts, function(item, index) {
+                return _.contains([selectcat], item.cat);
+              })
+            for (var i = 0; i < products.length; i++) {
+                content = '';
+               
+                if (products[i].stock > 0) {
+                    if (products[i].oldprice != 0 || products[i].oldprice != '') {
+                        oldpricing = currency_icon + '' + products[i].oldprice.toFixed(2)
+                    } else {
+                        oldpricing = '';
+                    }
+                    content+='<li class="swipeout">'+
+                                '<div class="swipeout-content" data-id="'+ products[i].id +'">'+
+                            //    '<a href="/product/'+ products[i].id +'/" class="item-link item-content popup-close">'+
+                                '<a href="/product/'+ products[i].id +'/" class="item-link item-content popup-close">'+
+                                    '<div class="item-media"><img src="'+ products[i].img +'" width="80"></div>'+
+                                    '<div class="item-inner">'+
+                                    '<div class="item-title-row">'+
+                                        '<div class="item-title">'+ products[i].title +'</div>'+
+                                        '<div class="item-after">'+'<del>'+oldpricing+'</del>&nbsp; <span>'+currency_icon+' '+ products[i].price +'</span></div>'+
+                                    '</div>'+
+                                    
+                                    '<div class="item-text">'+ products[i].desc+'</div>'+
+                                    '</div>'+
+                                '</a>'+
+                                '<div id="stepper_prod_'+products[i].id+'" data-id="'+products[i].id+'" class="myStepper_'+products[i].id+' swipeout-actions-right">'+
+                                '<div class="stepper stepper-small stepper-init">'+
+                                    '<div class="stepper-button-minus prod_'+products[i].id+'" onclick="app.updateItem('+products[i].id+' ,'+products[i].stock+')">'+'</div>'+
+                                    '<div class="stepper-input-wrap">'+
+                                        '<input type="number" id="prod_'+products[i].id+'" name="quant['+products[i].id+']" class="form-control input-number quantity manage-qtty" min="0" max="100" readonly="">'+
+                                    '</div>'+
+                                    
+                                    '<div class="stepper-button-plus prod_'+products[i].id+'" data-id="plus_'+products[i].id+'" onclick="app.addToMyCart('+products[i].id+')">'+'</div>'+
+                                    '</div>'+
+                                '</div>'+
+                                
+                                
+                            '</div></li>';
+                   
+                  
+                }
+            }
+            $$("#categoryListSelect").html(content);
+        })
     });
 /**************************************** CART */
 app.loadStore = function () {}
@@ -581,7 +629,7 @@ app.createProducts = function () {
     var products = [{
                 id: 1,
                 sku: 'A0000001',
-                name: 'Denim Shirt',
+                title: 'Denim Shirt',
                 cat: 'Sports Wear',
                 state: 'New',
                 statecolor: 'red',
@@ -604,7 +652,7 @@ app.createProducts = function () {
             {
                 id: 2,
                 sku: 'A0000002',
-                name: 'Drypers Mega Pack',
+                title: 'Drypers Mega Pack',
                 cat: 'Baby',
                 state: 'Sale',
                 statecolor: 'green',
@@ -627,7 +675,7 @@ app.createProducts = function () {
             {
                 id: 3,
                 sku: 'A0000003',
-                name: 'Cool Shirt',
+                title: 'Cool Shirt',
                 cat: 'Out Wear',
                 state: '',
                 statecolor: '',
@@ -650,7 +698,7 @@ app.createProducts = function () {
             {
                 id: 4,
                 sku: 'A0000004',
-                name: '137 Degrees Iced Coffee Latte with Almond Milk Drink',
+                title: '137 Degrees Iced Coffee Latte with Almond Milk Drink',
                 cat: 'Coffee',
                 state: '',
                 statecolor: '',
@@ -673,7 +721,7 @@ app.createProducts = function () {
             {
                 id: 5,
                 sku: 'A0000005',
-                name: 'Gingen Strong Ginger Formula Tea',
+                title: 'Gingen Strong Ginger Formula Tea',
                 cat: 'Tea',
                 state: 'Best Seller',
                 size: '',
@@ -696,7 +744,7 @@ app.createProducts = function () {
             {
                 id: 6,
                 sku: 'A0000006',
-                name: 'Cool Shirt',
+                title: 'Cool Shirt',
                 cat: 'Out Wear',
                 state: '',
                 statecolor: '',
@@ -900,7 +948,7 @@ app.getProducts = function () {
             items += '<tr>'
             //items += '<td><img src="'+n.img+'" /></td>'
             items += '<td><span class="qant">' + n.cant + '</span></td>'
-            items += '<td><h3 class="title" data-id="' + n.sku + '">' + n.name + '</h3></td>'
+            items += '<td><h3 class="title" data-id="' + n.sku + '">' + n.title + '</h3></td>'
             items += '<td colspan="2"><p class="right"><del>' + oldpricing + '</del></p>'
             items += '<p class="price right">' + currency_icon + '' + n.price.toFixed(2) + '</p></td>'
             items += '</tr>';
@@ -982,9 +1030,9 @@ app.updatePayForm = function () {
     if (undefined != cart && null != cart && cart != '') {
         var i = 1;
         _.forEach(cart.items, function (prod, key) {
-            dinamic += '<input type="hidden" name="item_name_' + i + '" value="' + prod.name + '">'
+            dinamic += '<input type="hidden" name="item_name_' + i + '" value="' + prod.title + '">'
             dinamic += '<input type="hidden" name="amount_' + i + '" value="' + prod.price + '">'
-            dinamic += '<input type="hidden" name="iuem_sku_' + i + '" value="' + prod.sku + '">'
+            dinamic += '<input type="hidden" name="item_sku_' + i + '" value="' + prod.sku + '">'
             dinamic += '<input type="hidden" name="item_number_' + i + '" value="' + prod.id + '" />'
             dinamic += '<input type="hidden" name="quantity_' + i + '" value="' + prod.cant + '" />'
             dinamic += '<input type="hidden" class="grndTotal" name="total_' + i + '" value="' + grandtotal + '" />' // added by jrn
