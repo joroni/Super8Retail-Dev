@@ -5,6 +5,7 @@ var $$ = Dom7;
 //var orderItems = JSON.parse(localStorage.getItem("txtClients"));
 var orderItems = localStorage.getItem("txtClients");
 var customers = localStorage.getItem("customers");
+var base_url = 'http://localhost';
 var app = new Framework7({
     root: '#app', // App root element
     id: 'io.framework7.testapp', // App bundle ID
@@ -220,7 +221,19 @@ $$(document)
 $$(document)
     .on('DOMContentLoaded', function () {
         app.purchaseOrders();
+        app.fetchProductData();
+       
     });
+
+
+    app.fetchProductData = function () {
+        app.preloader.show();
+        // Perform Ajax request
+        app.request.get('http://localhost/slim/public/api/products', function (data) {
+            // Hide preloader when Ajax request completed
+            app.preloader.hide();
+        });
+    }
 
 //alert("catalogc");
 app.purchaseOrders = function () {
@@ -234,7 +247,7 @@ app.purchaseOrders = function () {
         txtClients = [];
     }
 
-   
+
     /*$$("#frmCadastro").on("submit", function () {
         if (operation == "A") {
             return Adicionar(txtClients);
@@ -271,7 +284,7 @@ app.purchaseOrders = function () {
                 .val(cli.cid);
             $$("#txtDate")
                 .val(cli.date);
-           
+
             $$("#txtItems")
                 .val(cli.items);
             $$("#txtNotes")
@@ -280,7 +293,7 @@ app.purchaseOrders = function () {
                 .attr("readonly", "readonly");
             $$("#txtName")
                 .focus();
-            
+
         });
 
     $$("#tblList")
@@ -302,8 +315,8 @@ app.purchaseOrders = function () {
         $$("#servingpo")
             .html(timepo);
         app.dialog.alert(timepo + ' ' + activeCustomer);
-     //   $$("#thisCart").html().clone().appendTo("#itemRecap");
-    
+        //   $$("#thisCart").html().clone().appendTo("#itemRecap");
+
 
     }
 
@@ -332,7 +345,7 @@ app.purchaseOrders = function () {
         $$('#frmCadastro')
             .hide();
         $$('.popup-backdrop').removeClass('backdrop-in');
-            
+
         app.router.navigate('/catalogc/');
         //    view1.router.refreshPage(); 
         // view1.router.loadPage({ url: '/pages/catalogc.html', reload: true });
@@ -536,58 +549,58 @@ $$(document)
     });
 
 $$(document).on('page:init', '.page[data-name="category"]', function (e) {
-        app.loadStore();
-        console.log('Category');
-        $$("a.category").on('click', function(){
+    app.loadStore();
+    console.log('Category');
+    $$("a.category").on('click', function () {
         var selectcat = $$(this).attr("alt");
-            console.log(selectcat);
-            var rawproducts = JSON.parse(localStorage.getItem("products"));
-           var products= _.filter(rawproducts, function(item, index) {
-                return _.contains([selectcat], item.cat);
-              })
-            for (var i = 0; i < products.length; i++) {
-                content = '';
-               
-                if (products[i].stock > 0) {
-                    if (products[i].oldprice != 0 || products[i].oldprice != '') {
-                        oldpricing = currency_icon + '' + products[i].oldprice.toFixed(2)
-                    } else {
-                        oldpricing = '';
-                    }
-                    content+='<li class="swipeout">'+
-                                '<div class="swipeout-content" data-id="'+ products[i].id +'">'+
-                            //    '<a href="/product/'+ products[i].id +'/" class="item-link item-content popup-close">'+
-                                '<a href="/product/'+ products[i].id +'/" class="item-link item-content popup-close">'+
-                                    '<div class="item-media"><img src="'+ products[i].img +'" width="80"></div>'+
-                                    '<div class="item-inner">'+
-                                    '<div class="item-title-row">'+
-                                        '<div class="item-title">'+ products[i].title +'</div>'+
-                                        '<div class="item-after">'+'<del>'+oldpricing+'</del>&nbsp; <span>'+currency_icon+' '+ products[i].price +'</span></div>'+
-                                    '</div>'+
-                                    
-                                    '<div class="item-text">'+ products[i].desc+'</div>'+
-                                    '</div>'+
-                                '</a>'+
-                                '<div id="stepper_prod_'+products[i].id+'" data-id="'+products[i].id+'" class="myStepper_'+products[i].id+' swipeout-actions-right">'+
-                                '<div class="stepper stepper-small stepper-init">'+
-                                    '<div class="stepper-button-minus prod_'+products[i].id+'" onclick="app.updateItem('+products[i].id+' ,'+products[i].stock+')">'+'</div>'+
-                                    '<div class="stepper-input-wrap">'+
-                                        '<input type="number" id="prod_'+products[i].id+'" name="quant['+products[i].id+']" class="form-control input-number quantity manage-qtty" min="0" max="100" readonly="">'+
-                                    '</div>'+
-                                    
-                                    '<div class="stepper-button-plus prod_'+products[i].id+'" data-id="plus_'+products[i].id+'" onclick="app.addToMyCart('+products[i].id+')">'+'</div>'+
-                                    '</div>'+
-                                '</div>'+
-                                
-                                
-                            '</div></li>';
-                   
-                  
-                }
-            }
-            $$("#categoryListSelect").html(content);
+        console.log(selectcat);
+        var rawproducts = JSON.parse(localStorage.getItem("products"));
+        var products = _.filter(rawproducts, function (item, index) {
+            return _.contains([selectcat], item.cat);
         })
-    });
+        for (var i = 0; i < products.length; i++) {
+            content = '';
+
+            if (products[i].stock > 0) {
+                if (products[i].oldprice != 0 || products[i].oldprice != '') {
+                    oldpricing = currency_icon + '' + products[i].oldprice.toFixed(2)
+                } else {
+                    oldpricing = '';
+                }
+                content += '<li class="swipeout">' +
+                    '<div class="swipeout-content" data-id="' + products[i].id + '">' +
+                    //    '<a href="/product/'+ products[i].id +'/" class="item-link item-content popup-close">'+
+                    '<a href="/product/' + products[i].id + '/" class="item-link item-content popup-close">' +
+                    '<div class="item-media"><img src="' + products[i].img + '" width="80"></div>' +
+                    '<div class="item-inner">' +
+                    '<div class="item-title-row">' +
+                    '<div class="item-title">' + products[i].title + '</div>' +
+                    '<div class="item-after">' + '<del>' + oldpricing + '</del>&nbsp; <span>' + currency_icon + ' ' + products[i].price + '</span></div>' +
+                    '</div>' +
+
+                    '<div class="item-text">' + products[i].desc + '</div>' +
+                    '</div>' +
+                    '</a>' +
+                    '<div id="stepper_prod_' + products[i].id + '" data-id="' + products[i].id + '" class="myStepper_' + products[i].id + ' swipeout-actions-right">' +
+                    '<div class="stepper stepper-small stepper-init">' +
+                    '<div class="stepper-button-minus prod_' + products[i].id + '" onclick="app.updateItem(' + products[i].id + ' ,' + products[i].stock + ')">' + '</div>' +
+                    '<div class="stepper-input-wrap">' +
+                    '<input type="number" id="prod_' + products[i].id + '" name="quant[' + products[i].id + ']" class="form-control input-number quantity manage-qtty" min="0" max="100" readonly="">' +
+                    '</div>' +
+
+                    '<div class="stepper-button-plus prod_' + products[i].id + '" data-id="plus_' + products[i].id + '" onclick="app.addToMyCart(' + products[i].id + ')">' + '</div>' +
+                    '</div>' +
+                    '</div>' +
+
+
+                    '</div></li>';
+
+
+            }
+        }
+        $$("#categoryListSelect").html(content);
+    })
+});
 /**************************************** CART */
 app.loadStore = function () {}
 var business_paypal = '', // aquí va tu correo electrónico de paypal
@@ -1048,25 +1061,26 @@ app.updatePayForm = function () {
 
 $$(".btn-checkout")
     .on('click', function () {
-        
+
         app.dialog.alert('Please confirm details on the next screens.');
         console.log()
         var myCname = localStorage.getItem("fnMember");
         var myPoNumber = localStorage.getItem("timeandponumber");
         var myItems = $$("#thisCart").html();
-        
-     
+
+
         $$("#itemRecap").html(myItems);
         $$("#itemRecap tbody").addClass("cart");
+
         function Unix_timestamp(t) {
             var dt = new Date(t * 1000);
             var d = new Date();
             var hr = dt.getHours();
             var m = "0" + dt.getMinutes();
             var s = "0" + dt.getSeconds();
-          //  return dt + '-' + hr + ':' + m.substr(-2) + ':' + s.substr(-2);
-          return d + '-' + hr + ':' + m.substr(-2);
-          
+            //  return dt + '-' + hr + ':' + m.substr(-2) + ':' + s.substr(-2);
+            return d + '-' + hr + ':' + m.substr(-2);
+
         }
         var theTime = Unix_timestamp(myPoNumber);
         $$("#txtItems")
@@ -1147,29 +1161,29 @@ app.resetCart = function () {
 
 
 app.resetPOCart = function () {
-  
-        localStorage.removeItem("cart");
-        localStorage.removeItem("idMember");
-        localStorage.removeItem("grndTotal");
-        localStorage.removeItem("listHTML");
-        localStorage.removeItem("timeandponumber");
-        localStorage.removeItem("fnMember");
-        
-        $$(".cart, .mycart, #totalItems")
-            .html("");
 
-        //  localStorage.removeItem("purchaseorder");
-       
-        console.log("Cache is now cleared.");
-        
-        app.router.navigate('/catalogc/');
-      /*
-        ordersView.router.navigate(ordersView.router.currentRoute.url, {
-            ignoreCache: true,
-            reloadCurrent: true
-        });*/
-       // ordersView.router.refreshPage();
-        return true;
+    localStorage.removeItem("cart");
+    localStorage.removeItem("idMember");
+    localStorage.removeItem("grndTotal");
+    localStorage.removeItem("listHTML");
+    localStorage.removeItem("timeandponumber");
+    localStorage.removeItem("fnMember");
+
+    $$(".cart, .mycart, #totalItems")
+        .html("");
+
+    //  localStorage.removeItem("purchaseorder");
+
+    console.log("Cache is now cleared.");
+
+    app.router.navigate('/catalogc/');
+    /*
+      ordersView.router.navigate(ordersView.router.currentRoute.url, {
+          ignoreCache: true,
+          reloadCurrent: true
+      });*/
+    // ordersView.router.refreshPage();
+    return true;
 
 }
 /************************************* */
@@ -1261,14 +1275,14 @@ btns.on("click", function () {
 //  $$(document).ready(function () {
 $$(document).on('DOMContentLoaded', function () {
 
-        app.init();
-        app.updatePayForm();
-        app.createProducts();
-        app.getProducts();
-     
-        currency_icon = '₱';
-        localStorage.setItem("myCurrency", currency_icon);
-       
-    });
+    app.init();
+    app.updatePayForm();
+    app.createProducts();
+    app.getProducts();
+
+    currency_icon = '₱';
+    localStorage.setItem("myCurrency", currency_icon);
+
+});
 
 /**************************************** CART */
