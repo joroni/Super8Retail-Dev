@@ -85,6 +85,78 @@ $$('a.category')
         app.dialog.alert(selectedCat);
     });
 
+    /*********************************************** */
+    $$(document).on('page:init', '.page[data-name="product"]', function (e) {
+console.log('catalog-category');
+
+    var productss = JSON.parse(localStorage.getItem("products"));
+    
+    products = _.find(productss, {
+        'id': id
+    });
+      
+    for (var i = 0; i < products.length; i++) {
+        content = '';
+
+        if (products[i].stock > 0) {
+            if (products[i].oldprice != 0 || products[i].oldprice != '') {
+                oldpricing = currency_icon + '' + products[i].oldprice.toFixed(2)
+            } else {
+                oldpricing = '';
+            }
+           content+='<div class="row wow fadeIn" style="visibility: visible; animation-name: fadeIn;">'+
+ 
+             '<!--Grid column-->'+
+                '<div class="col-md-6 mb-4 centered" id="prodImg"><img src="'+ products[i].img + '" class="img-fluid prod-page-image" alt=""></div>'+
+                '<div class="col-md-6 mb-4">'+
+                    '<div class="p-1">'+
+
+                        '<h2 class="centered" id="thisName">'+ products[i].title + '</h2>'+
+                        '<p class="lead small centered" id="thisStock">In Stock: '+ products[i].stock + '</p>'+
+                    '</div>'+
+                
+                    '<div class="p-1">'+
+
+                        '<div class="mb-3 centered" id="thisBadges"><a href=""><span class="mybadge badge '+ products[i].statcolor + ' mr-1">'+ products[i].state + '</span></a></div>'+
+
+                        '<p class="lead centered" id="thisLead"><span class="mr-1"><del>'+ products[i].oldprice + '</del></span><span>'+
+                        + products[i].price + '</span></p>'+
+
+                        '<p class="lead font-weight-bold">Description</p>'+
+
+                        '<p id="thisDesc">'+ products[i].desc + '</p>'+
+                        '<hr>'+
+                        '<form class="d-flex justify-content-left" id="thisAddCart">'+
+                            '<!-- Default input -->'+
+                        '</form>'+
+                        '<div data-id="'+ products[i].id + '" class="mystepper'+ products[i].id + '">'+
+                        '</div>'+
+
+                        '<div id="stepper_center_prod_'+ products[i].id + '" data-id="'+ products[i].id + '" class="centered">'+
+                            '<div class="stepper stepper-small stepper-init">'+
+                                '<div class="stepper-button-minus prod_'+ products[i].id + '" onclick="app.updateItem('+ products[i].id + ' ,{{product.stock}})"></div>'+
+                                '<div class="stepper-input-wrap">'+
+                                    '<input type="number" id="prod_'+ products[i].id + '" readonly name="quant['+ products[i].id + ']" class="form-control input-number quantity manage-qtty" value="0" min="0" max="100">'+
+                                '</div>'+
+                                '<div class="stepper-button-plus prod_'+ products[i].id + '" data-id="plus_'+ products[i].id + '" onclick="app.addToMyCart('+ products[i].id + ')"></div>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'+
+                    '<!--Content-->'+
+
+                '</div></div>';
+                
+        }
+    }
+
+    app.preloader.show();
+    setTimeout(function () {
+        app.preloader.hide();
+        $$("#productPage").html(content);
+    }, 3000);
+
+  
+});
 /****************************************** */
 $$(document)
     .on('page:init', '.page[data-name="catalog"]', function (e) {
@@ -96,6 +168,12 @@ $$(document)
            // Hide preloader when Ajax request completed
            app.preloader.hide();
          });*/
+
+
+
+/**********************************8 */
+   
+
         app.preloader.show();
         setTimeout(function () {
             app.preloader.hide();
@@ -548,6 +626,8 @@ $$(document)
         }
     });
 
+
+
 $$(document).on('page:init', '.page[data-name="category"]', function (e) {
     app.loadStore();
     console.log('Category');
@@ -560,6 +640,7 @@ $$(document).on('page:init', '.page[data-name="category"]', function (e) {
         })
         for (var i = 0; i < products.length; i++) {
             content = '';
+            contentproduct ='';
 
             if (products[i].stock > 0) {
                 if (products[i].oldprice != 0 || products[i].oldprice != '') {
@@ -570,7 +651,7 @@ $$(document).on('page:init', '.page[data-name="category"]', function (e) {
                 content += '<li class="swipeout">' +
                     '<div class="swipeout-content" data-id="' + products[i].id + '">' +
                     //    '<a href="/product/'+ products[i].id +'/" class="item-link item-content popup-close">'+
-                    '<a href="/product/' + products[i].id + '/" class="item-link item-content popup-close">' +
+                    '<a href="/product/' + products[i].id + '/" alt="'+ products[i].id +'" class="item-link prod-link item-content popup-close">' +
                     '<div class="item-media"><img src="' + products[i].img + '" width="80"></div>' +
                     '<div class="item-inner">' +
                     '<div class="item-title-row">' +
@@ -591,14 +672,26 @@ $$(document).on('page:init', '.page[data-name="category"]', function (e) {
                     '<div class="stepper-button-plus prod_' + products[i].id + '" data-id="plus_' + products[i].id + '" onclick="app.addToMyCart(' + products[i].id + ')">' + '</div>' +
                     '</div>' +
                     '</div>' +
-
-
                     '</div></li>';
 
 
-            }
+
+                   
+                
         }
+    }
+
+    
+           
         $$("#categoryListSelect").html(content);
+
+    $$("a.prod-link").on('click', function(){
+       
+       var id = $$(this).attr("alt");
+      // $$("#productPage").append(content);
+        console.log("product");
+      })
+      
     })
 });
 /**************************************** CART */
